@@ -1,0 +1,90 @@
+---
+controller_projects:
+  - name: aap-terraform-integration-cac
+    organization: Default
+    description: AAP Terraform integration project managed by CaC 
+    scm_type: git
+    scm_url: https://github.com/jswelborn/aap-terraform-integration.git
+    scm_branch: main
+    scm_update_on_launch: true
+    default_environment: Default execution environment
+    wait: true
+    update_project: true
+
+  - name: Linux-automox-cac
+    organization: Default
+    description: Automation content for Linux Automox agent deployment and lifecycle management
+    scm_type: git
+    scm_url: https://github.com/jswelborn/ansible-linux-automox.git
+    scm_branch: main
+    scm_update_on_launch: true
+    default_environment: Default execution environment
+    wait: true
+    update_project: true
+
+  - name: Linux-crowdstrike-cac
+    organization: Default
+    description: Automation content for Linux CrowdStrike agent deployment and lifecycle management
+    scm_type: git
+    scm_url: https://github.com/jswelborn/ansible-linux-crowdstrike.git
+    scm_branch: main
+    scm_update_on_launch: true
+    default_environment: Default execution environment
+    wait: true
+    update_project: true
+
+  - name: Linux-datadog-cac
+    organization: Default
+    description: Automation content for Linux Datadog agent deployment and lifecycle management
+    scm_type: git
+    scm_url: https://github.com/jswelborn/ansible-linux-datadog.git
+    scm_branch: main
+    scm_update_on_launch: true
+    default_environment: Default execution environment
+    wait: true
+    update_project: true
+
+  - name: Linux-identity-cac
+    organization: Default
+    description: Automation content for Linux identity configuration and lifecycle management
+    scm_type: git
+    scm_url: https://github.com/jswelborn/ansible-identity.git
+    scm_branch: main
+    credential: "GitHub PAT - AAP"
+    scm_update_on_launch: true
+    default_environment: Default execution environment
+    wait: true
+    update_project: true
+
+  - name: Linux-snowagent-cac
+    organization: Default
+    description: Automation content for Linux ServiceNow agent deployment and lifecycle management
+    scm_type: git
+    scm_url: https://github.com/jswelborn/ansible-linux-snowagent.git
+    scm_branch: main
+    scm_update_on_launch: true
+    default_environment: Default execution environment
+    wait: true
+    update_project: true
+
+  - name: Linux-sumologic-cac
+    organization: Default
+    description: Automation content for Linux SumoLogic agent deployment and lifecycle management
+    scm_type: git
+    scm_url: https://github.com/jswelborn/ansible-linux-sumologic.git
+    scm_branch: main
+    scm_update_on_launch: true
+    default_environment: Default execution environment
+    wait: true
+    update_project: true
+
+  - name: Linux-tenable-cac
+    organization: Default
+    description: Automation content for Linux Tenable agent deployment and lifecycle management
+    scm_type: git
+    scm_url: https://github.com/jswelborn/ansible-linux-tenable.git
+    scm_branch: main
+    scm_update_on_launch: true
+    default_environment: Default execution environment
+    wait: true
+    update_project: true

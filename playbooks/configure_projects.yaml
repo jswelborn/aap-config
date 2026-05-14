@@ -1,0 +1,11 @@
+---
+- name: Configure projects in AAP
+  hosts: localhost
+  gather_facts: false
+
+  vars_files:
+    - ../projects/projects.yaml
+    - ../group_vars/all.yaml
+
+  roles:
+    - infra.aap_configuration.controller_projects

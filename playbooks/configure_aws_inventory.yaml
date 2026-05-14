@@ -1,0 +1,33 @@
+---
+- name: Configure AWS inventory in AAP
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars_files:
+    - ../inventories/aws.yaml
+    - ../group_vars/all.yaml
+
+  roles:
+    - infra.aap_configuration.controller_inventories
+    - infra.aap_configuration.controller_inventory_sources
+    - infra.aap_configuration.controller_inventory_source_update
+
+  post_tasks:
+    - name: Wait until Windows dynamic group exists
+      ansible.controller.group:
+        name: Windows
+        inventory: AWS-CaC-Test
+        state: exists
+        controller_host: "{{ aap_hostname }}"
+        controller_username: "{{ aap_username }}"
+        controller_password: "{{ aap_password }}"
+        validate_certs: "{{ aap_validate_certs }}"
+      register: windows_group_check
+      retries: 20
+      delay: 5
+      until: windows_group_check is succeeded
+
+    - name: Configure AWS inventory groups
+      ansible.builtin.include_role:
+        name: infra.aap_configuration.controller_host_groups

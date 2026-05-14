@@ -1,0 +1,80 @@
+---
+controller_inventories:
+  - name: AWS-CaC-Test
+    organization: Default
+    description: AWS dynamic inventory managed by code
+    variables:
+      managed_by: aap_cac
+
+controller_inventory_sources:
+  - name: AWS
+    organization: Default
+    inventory: AWS-CaC-Test
+    source: ec2
+    credential: "AWS Inventory"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: true
+    verbosity: 1
+    source_vars:
+      plugin: amazon.aws.aws_ec2
+      strict_permissions: false
+      strict: false
+      regions:
+        - us-east-1
+        - us-east-2
+        - us-west-1
+        - us-west-2
+      filters:
+        instance-state-name: running
+      hostnames:
+        - tag:Name
+        - private-dns-name
+        - private-ip-address
+      compose:
+        ansible_host: private_ip_address | default(public_ip_address) | default(private_dns_name)
+        private_ip: private_ip_address | default(None)
+        public_ip: public_ip_address | default(None)
+        instance_id: instance_id | default('')
+        instance_type: instance_type | default('')
+        image_id: image_id | default('')
+        platform: platform | default('')
+        platform_details: platform_details | default('')
+        provisioning_state: state.name | default('')
+        resource_type: '''aws_instance'''
+        cloud_provider: '''aws'''
+        os: platform_details | default('')
+      groups:
+        Windows: platform_details is match('Windows')
+        Linux: platform_details is not match('Windows')
+        AWS: true
+      keyed_groups:
+        - prefix: tag
+          key: tags
+        - prefix: region
+          key: placement.region
+        - prefix: availability_zone
+          key: placement.availability_zone
+        - prefix: instance_type
+          key: instance_type
+
+controller_inventory_sources_update:
+  - name: AWS
+    organization: Default
+    inventory: AWS-CaC-Test
+
+controller_groups:
+  - name: AWS_Windows_Config
+    inventory: AWS-CaC-Test
+    variables:
+      ansible_connection: winrm
+      ansible_port: 5985
+      ansible_winrm_transport: ntlm
+      ansible_winrm_server_cert_validation: ignore
+      ansible_shell_type: powershell
+      domain_name: companynet.org
+      domain_ou_path: OU=Terraform,OU=Servers,OU=Global,DC=CompanyNet,DC=org
+      snowcmdb_user: COMPANYNET\snowcmdb
+    children:
+      - Windows

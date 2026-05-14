@@ -1,0 +1,11 @@
+# Ansible collections
+collections/
+
+# Ansible runtime artifacts
+*.retry
+
+# Secrets
+group_vars/all.yaml
+ansible.cfg
+*.vault
+.vault_pass

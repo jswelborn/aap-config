@@ -1,0 +1,64 @@
+---
+controller_inventories:
+  - name: Azure-CaC-Test
+    organization: Default
+    description: Azure dynamic inventory managed by code
+    variables:
+      managed_by: aap_cac
+  
+controller_inventory_sources:
+  - name: Azure
+    organization: Default
+    inventory: Azure-CaC-Test
+    source: azure_rm
+    credential: "AAP Dynamic Inventory"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: true
+    verbosity: 1
+    source_vars:
+      plugin: azure_rm
+      include_vm_resource_groups:
+        - "*"
+      auth_source: env
+      plain_host_names: true
+      hostnames:
+        - name
+      compose:
+        ansible_host: >-
+          private_ipv4_addresses[0] | default(public_ipv4_addresses[0] | default(name))
+        private_ip: private_ipv4_addresses[0] | default(None)
+        os_offer: image.offer | default('')
+        os_sku: image.sku | default('')
+        provisioning_state: provisioning_state | default('')
+        resource_type: resource_type | default('')
+      conditional_groups:
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
+        Azure: true
+      keyed_groups:
+        - prefix: tag
+          key: tags
+        - prefix: location
+          key: location     
+
+controller_inventory_sources_update:
+  - name: Azure
+    organization: Default
+    inventory: Azure-CaC-Test
+
+controller_groups:
+  - name: Azure_Windows_Config
+    inventory: Azure-CaC-Test
+    variables:
+      ansible_connection: winrm
+      ansible_port: 5985
+      ansible_winrm_transport: ntlm
+      ansible_winrm_server_cert_validation: ignore
+      ansible_shell_type: powershell
+      domain_name: companynet.org
+      domain_ou_path: OU=Terraform,OU=Servers,OU=Global,DC=CompanyNet,DC=org
+      snowcmdb_user: COMPANYNET\snowcmdb
+    children:
+      - Windows
