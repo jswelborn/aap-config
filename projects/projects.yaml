@@ -88,3 +88,80 @@ controller_projects:
     default_environment: Default execution environment
     wait: true
     update_project: true
+
+  - name: Windows-automox-cac
+    organization: Default
+    description: Automation content for Windows Automox agent deployment and lifecycle management
+    scm_type: git
+    scm_url: https://github.com/jswelborn/ansible-windows-automox.git
+    scm_branch: main
+    scm_update_on_launch: true
+    default_environment: Default execution environment
+    wait: true
+    update_project: true
+
+  - name: Windows-crowdstrike-cac
+    organization: Default
+    description: Automation content for Windows CrowdStrike agent deployment and lifecycle management
+    scm_type: git
+    scm_url: https://github.com/jswelborn/ansible-windows-crowdstrike.git
+    scm_branch: main
+    scm_update_on_launch: true
+    default_environment: Default execution environment
+    wait: true
+    update_project: true
+
+  - name: Windows-datadog-cac
+    organization: Default
+    description: Automation content for Windows Datadog agent deployment and lifecycle management
+    scm_type: git
+    scm_url: https://github.com/jswelborn/ansible-windows-datadog.git
+    scm_branch: main
+    scm_update_on_launch: true
+    default_environment: Default execution environment
+    wait: true
+    update_project: true
+
+  - name: Windows-identity-cac
+    organization: Default
+    description: Automation content for Windows identity configuration and lifecycle management
+    scm_type: git
+    scm_url: https://github.com/jswelborn/ansible-windows-identity.git
+    scm_branch: main
+    scm_update_on_launch: true
+    default_environment: Default execution environment
+    wait: true
+    update_project: true
+
+  - name: Windows-snowagent-cac
+    organization: Default
+    description: Automation content for Windows ServiceNow agent configuration and lifecycle management
+    scm_type: git
+    scm_url: https://github.com/jswelborn/ansible-windows-snowagent.git
+    scm_branch: main
+    scm_update_on_launch: true
+    default_environment: Default execution environment
+    wait: true
+    update_project: true
+
+  - name: Windows-sumologic-cac
+    organization: Default
+    description: Automation content for Windows SumoLogic agent configuration and lifecycle management
+    scm_type: git
+    scm_url: https://github.com/jswelborn/ansible-windows-sumologic.git
+    scm_branch: main
+    scm_update_on_launch: true
+    default_environment: Default execution environment
+    wait: true
+    update_project: true
+
+  - name: Windows-tenable-cac
+    organization: Default
+    description: Automation content for Windows Tenable agent configuration and lifecycle management
+    scm_type: git
+    scm_url: https://github.com/jswelborn/ansible-windows-tenable.git
+    scm_branch: main
+    scm_update_on_launch: true
+    default_environment: Default execution environment
+    wait: true
+    update_project: true
