@@ -1,0 +1,41 @@
+---
+controller_workflows:
+  - name: Linux-bootstrap-azure-cac
+    organization: Default
+    description: Bootstrap workflow for Linux systems in Azure
+
+    inventory: Azure-CaC-Test
+    ask_inventory_on_launch: true
+    ask_limit_on_launch: true
+    ask_variables_on_launch: true
+
+    destroy_current_nodes: true
+
+    simplified_workflow_nodes:
+      - identifier: Linux-identity-azure
+        unified_job_template: Linux-identity-azure-cac
+        success_nodes:
+          - linux-sumologic-azure 
+          - linux-crowdstrike-azure
+          - linux-snowagent-azure 
+          - linux-datadog-azure 
+          - linux-tenable-azure
+          - linux-automox-azure
+
+      - identifier: linux-sumologic-azure
+        unified_job_template: Linux-sumologic-production-azure-cac
+
+      - identifier: linux-crowdstrike-azure
+        unified_job_template: Linux-crowdstrike-azure-cac
+
+      - identifier: linux-snowagent-azure
+        unified_job_template: Linux-snowagent-production-azure-cac
+
+      - identifier: linux-datadog-azure
+        unified_job_template: Linux-datadog-azure-cac
+
+      - identifier: linux-tenable-azure
+        unified_job_template: Linux-tenable-azure-cac
+
+      - identifier: linux-automox-azure
+        unified_job_template: Linux-automox-production-azure-cac

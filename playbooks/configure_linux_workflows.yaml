@@ -1,0 +1,12 @@
+---
+- name: Configure Linux workflows in AAP
+  hosts: localhost
+  connection: localhost
+  gather_facts: false
+
+  vars_files:
+    - ../workflows/linux.yaml
+    - ../group_vars/all.yaml
+
+  roles:
+    - infra.aap_configuration.controller_workflow_job_templates
