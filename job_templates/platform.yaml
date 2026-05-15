@@ -1,0 +1,22 @@
+---
+controller_templates:
+  - name: Terraform Cloud VM Post Apply - CaC
+    organization: Default
+    description: Post-provision orchestration workflow for Terraform-created virtual machines
+    job_type: run
+    inventory: Local
+    project: aap-terraform-integration-cac
+    playbook: playbooks/terraform_cloud_post_apply.yaml
+    credentials:
+      - AAP Controller Credential
+      - AWS EC2 Metadata Lookup
+      - HCP Terraform API Token
+    instance_groups:
+      - azure-execution
+      - aws-execution
+    execution_environment: Default execution environment
+    verbosity: 0
+    timeout: 0
+    job_slice_count: 1
+    prevent_instance_group_fallback: false
+    state: present
