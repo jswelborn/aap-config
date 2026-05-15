@@ -96,7 +96,7 @@ controller_templates:
     project: Linux-identity-cac
     playbook: linux_identity.yaml
     credentials:
-      - hetroot
+      - "AWS ec2-user SSH"
     instance_groups:
       - aws-execution
     execution environment: Default execution environment
