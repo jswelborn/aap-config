@@ -1,239 +1,224 @@
 ---
 controller_templates:
-  - name: Linux-automox-production-azure-cac
+  - name: Linux-automox-production-aws-cac
     organization: Default
-    description: AAP job template for Linux Automox agent deployment and lifecycle management in Azure
-
+    description: AAP job template for Linux Automox agent deployment and lifecycle management in AWS
     job_type: run
-    inventory: Azure-CaC-Test
+    inventory: AWS-CaC-Test
     project: Linux-automox-cac
     playbook: linux_automox.yaml
-
     credentials:
       - automox-production 
       - hetroot 
-
     instance_groups:
-      - azure-execution
-
+      - aws-execution
     execution environment: Default execution environment
-
     extra_vars:
       policy_group: production 
-
     become_enabled: true
     prevent_instance_group_fallback: true
-
     job_slice_count: 1
     forks: 0
     verbosity: 0
     timeout: 0
-
     state: present
 
-  - name: Linux-automox-staging-azure-cac
+  - name: Linux-automox-staging-aws-cac
     organization: Default
-    description: AAP job template for Linux Automox agent deployment and lifecycle management in Azure
-
+    description: AAP job template for Linux Automox agent deployment and lifecycle management in AWS
     job_type: run
-    inventory: Azure-CaC-Test
+    inventory: AWS-CaC-Test
     project: Linux-automox-cac
     playbook: linux_automox.yaml
-
     credentials:
       - automox-staging 
       - hetroot 
-
     instance_groups:
-      - azure-execution
-
+      - aws-execution
     execution environment: Default execution environment
-
     extra_vars:
       policy_group: staging
-
     become_enabled: true
     prevent_instance_group_fallback: true
-
     job_slice_count: 1
     forks: 0
     verbosity: 0
     timeout: 0
-
     state: present
 
-  - name: Linux-crowdstrike-azure-cac
+  - name: Linux-crowdstrike-aws-cac
     organization: Default
-    description: AAP job template for Linux CrowdStrike agent deployment and lifecycle management in Azure
-
+    description: AAP job template for Linux CrowdStrike agent deployment and lifecycle management in AWS
     job_type: run
-    inventory: Azure-CaC-Test
+    inventory: AWS-CaC-Test
     project: Linux-crowdstrike-cac
     playbook: linux_crowdstrike.yaml
-
     credentials:
       - "Crowdstrike CID" 
       - hetroot 
-
     instance_groups:
-      - azure-execution
-
+      - aws-execution
     execution environment: Default execution environment
-
     become_enabled: true
     prevent_instance_group_fallback: true
-
     job_slice_count: 1
     forks: 0
     verbosity: 0
     timeout: 0
-
     state: present
 
-  - name: Linux-datadog-azure-cac
+  - name: Linux-datadog-aws-cac
     organization: Default
-    description: AAP job template for Linux Datadog agent deployment and lifecycle management in Azure
-
+    description: AAP job template for Linux Datadog agent deployment and lifecycle management in AWS
     job_type: run
-    inventory: Azure-CaC-Test
+    inventory: AWS-CaC-Test
     project: Linux-datadog-cac
     playbook: linux_datadog.yaml
-
     credentials:
       - "Datadog API Key" 
       - hetroot
-
     instance_groups:
-      - azure-execution
-
+      - aws-execution
     execution environment: Default execution environment
-
     become_enabled: true
     prevent_instance_group_fallback: true
-
     job_slice_count: 1
     forks: 0
     verbosity: 0
     timeout: 0
-
     state: present
 
-  - name: Linux-identity-azure-cac
+  - name: Linux-identity-aws-cac
     organization: Default
-    description: AAP job template for Linux identity configuration and lifecycle management in Azure
-
+    description: AAP job template for Linux identity configuration and lifecycle management in AWS
     job_type: run
-    inventory: Azure-CaC-Test
+    inventory: AWS-CaC-Test
     project: Linux-identity-cac
     playbook: linux_identity.yaml
-
     credentials:
       - hetroot
-
     instance_groups:
-      - azure-execution
-
+      - aws-execution
     execution environment: Default execution environment
-
     become_enabled: true
     prevent_instance_group_fallback: true
-
     job_slice_count: 1
     forks: 0
     verbosity: 0
     timeout: 0
-
     state: present
 
-  - name: Linux-snowagent-production-azure-cac
+  - name: Linux-snowagent-production-aws-cac
     organization: Default
-    description: AAP job template for Linux ServiceNow ACC agent deployment and lifecycle management in Azure
-
+    description: AAP job template for Linux ServiceNow ACC agent deployment and lifecycle management in AWS
     job_type: run
-    inventory: Azure-CaC-Test
+    inventory: AWS-CaC-Test
     project: Linux-snowagent-cac
     playbook: linux_snowagent.yaml
-
     credentials:
       - hetroot
       - snowagent-production
-
     instance_groups:
-      - azure-execution
-
+      - aws-execution
     execution environment: Default execution environment
-
     extra_vars:
       policy_group: production
-
     become_enabled: true
     prevent_instance_group_fallback: true
-
     job_slice_count: 1
     forks: 0
     verbosity: 0
     timeout: 0
-
     state: present
 
-  - name: Linux-sumologic-production-azure-cac
+  - name: Linux-snowagent-staging-aws-cac
     organization: Default
-    description: AAP job template for Linux SumoLogic agent deployment and lifecycle management in Azure
-
+    description: AAP job template for Linux ServiceNow ACC agent deployment and lifecycle management in AWS
     job_type: run
-    inventory: Azure-CaC-Test
+    inventory: AWS-CaC-Test
+    project: Linux-snowagent-cac
+    playbook: linux_snowagent.yaml
+    credentials:
+      - hetroot
+      - snowagent-staging
+    instance_groups:
+      - aws-execution
+    execution environment: Default execution environment
+    extra_vars:
+      policy_group: staging
+    become_enabled: true
+    prevent_instance_group_fallback: true
+    job_slice_count: 1
+    forks: 0
+    verbosity: 0
+    timeout: 0
+    state: present
+
+  - name: Linux-sumologic-production-aws-cac
+    organization: Default
+    description: AAP job template for Linux SumoLogic agent deployment and lifecycle management in AWS
+    job_type: run
+    inventory: AWS-CaC-Test
     project: Linux-sumologic-cac
     playbook: linux_sumologic.yaml
-
     credentials:
       - hetroot
       - linux-sumologic-production
-
     instance_groups:
-      - azure-execution
-
+      - aws-execution
     execution environment: Default execution environment
-
     extra_vars:
       sumologic_environment: production
-
     become_enabled: true
     prevent_instance_group_fallback: true
-
     job_slice_count: 1
     forks: 0
     verbosity: 0
     timeout: 0
-
     state: present
 
-  - name: Linux-tenable-azure-cac
+  - name: Linux-sumologic-staging-aws-cac
     organization: Default
-    description: AAP job template for Linux Tenable agent deployment and lifecycle management in Azure
-
+    description: AAP job template for Linux SumoLogic agent deployment and lifecycle management in AWS
     job_type: run
-    inventory: Azure-CaC-Test
+    inventory: AWS-CaC-Test
+    project: Linux-sumologic-cac
+    playbook: linux_sumologic.yaml
+    credentials:
+      - hetroot
+      - sumologic-linux-staging
+    instance_groups:
+      - aws-execution
+    execution environment: Default execution environment
+    extra_vars:
+      sumologic_environment: staging
+    become_enabled: true
+    prevent_instance_group_fallback: true
+    job_slice_count: 1
+    forks: 0
+    verbosity: 0
+    timeout: 0
+    state: present
+
+  - name: Linux-tenable-aws-cac
+    organization: Default
+    description: AAP job template for Linux Tenable agent deployment and lifecycle management in AWS
+    job_type: run
+    inventory: AWS-CaC-Test
     project: Linux-tenable-cac
     playbook: linux_tenable.yaml
-
     credentials:
       - hetroot
       - tenable
-
     instance_groups:
-      - azure-execution
-
+      - aws-execution
     execution environment: Default execution environment
-
     extra_vars:
       install_tenable: true
-
     become_enabled: true
     prevent_instance_group_fallback: true
-
     job_slice_count: 1
     forks: 0
     verbosity: 0
     timeout: 0
-
     state: present

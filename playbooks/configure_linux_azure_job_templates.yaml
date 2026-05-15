@@ -1,11 +1,11 @@
 ---
-- name: Configure Linux job templates in AAP
+- name: Configure Linux Azure job templates in AAP
   hosts: localhost
   connection: localhost
   gather_facts: false
 
   vars_files:
-    - ../job_templates/linux.yaml
+    - ../job_templates/linux_azure.yaml
     - ../group_vars/all.yaml
 
   roles:
