@@ -1,0 +1,30 @@
+---
+- name: Configure all AAP CaC components
+  ansible.builtin.import_playbook: configure_projects.yaml
+
+- name: Configure Azure inventory
+  ansible.builtin.import_playbook: configure_azure_inventory.yaml
+
+- name: Configure AWS inventory
+  ansible.builtin.import_playbook: configure_aws_inventory.yaml
+
+- name: Configure Linux Azure job templates
+  ansible.builtin.import_playbook: configure_linux_azure_job_templates.yaml
+
+- name: Configure Linux AWS job templates
+  ansible.builtin.import_playbook: configure_linux_aws_job_templates.yaml
+
+- name: Configure Windows Azure job templates
+  ansible.builtin.import_playbook: configure_windows_azure_job_templates.yaml
+
+- name: Configure Windows AWS job templates
+  ansible.builtin.import_playbook: configure_windows_aws_job_templates.yaml
+
+- name: Configure platform job templates
+  ansible.builtin.import_playbook: configure_platform_job_templates.yaml
+
+- name: Configure Linux workflows
+  ansible.builtin.import_playbook: configure_linux_workflows.yaml
+
+- name: Configure Windows workflows
+  ansible.builtin.import_playbook: configure_windows_workflows.yaml
