@@ -1,0 +1,12 @@
+---
+- name: Configure organizations in AAP
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars_files:
+    - ../organizations/organizations.yaml
+    - ../group_vars/all.yaml
+
+  roles:
+    - infra.aap_configuration.controller_organizations
