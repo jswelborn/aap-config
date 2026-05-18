@@ -1,7 +1,7 @@
 ---
 controller_templates:
   - name: Linux-automox-production-azure-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP job template for Linux Automox agent deployment and lifecycle management in Azure
     job_type: run
     inventory: Azure-CaC-Test
@@ -24,7 +24,7 @@ controller_templates:
     state: present
 
   - name: Linux-automox-staging-azure-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP job template for Linux Automox agent deployment and lifecycle management in Azure
     job_type: run
     inventory: Azure-CaC-Test
@@ -47,7 +47,7 @@ controller_templates:
     state: present
 
   - name: Linux-crowdstrike-azure-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP job template for Linux CrowdStrike agent deployment and lifecycle management in Azure
     job_type: run
     inventory: Azure-CaC-Test
@@ -68,7 +68,7 @@ controller_templates:
     state: present
 
   - name: Linux-datadog-azure-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP job template for Linux Datadog agent deployment and lifecycle management in Azure
     job_type: run
     inventory: Azure-CaC-Test
@@ -89,7 +89,7 @@ controller_templates:
     state: present
 
   - name: Linux-identity-azure-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP job template for Linux identity configuration and lifecycle management in Azure
     job_type: run
     inventory: Azure-CaC-Test
@@ -109,7 +109,7 @@ controller_templates:
     state: present
 
   - name: Linux-snowagent-production-azure-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP job template for Linux ServiceNow ACC agent deployment and lifecycle management in Azure
     job_type: run
     inventory: Azure-CaC-Test
@@ -132,7 +132,7 @@ controller_templates:
     state: present
 
   - name: Linux-snowagent-staging-azure-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP job template for Linux ServiceNow ACC agent deployment and lifecycle management in Azure
     job_type: run
     inventory: Azure-CaC-Test
@@ -155,7 +155,7 @@ controller_templates:
     state: present
 
   - name: Linux-sumologic-production-azure-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP job template for Linux SumoLogic agent deployment and lifecycle management in Azure
     job_type: run
     inventory: Azure-CaC-Test
@@ -178,7 +178,7 @@ controller_templates:
     state: present
 
   - name: Linux-sumologic-staging-azure-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP job template for Linux SumoLogic agent deployment and lifecycle management in Azure
     job_type: run
     inventory: Azure-CaC-Test
@@ -201,7 +201,7 @@ controller_templates:
     state: present
 
   - name: Linux-tenable-azure-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP job template for Linux Tenable agent deployment and lifecycle management in Azure
     job_type: run
     inventory: Azure-CaC-Test

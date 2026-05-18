@@ -1,7 +1,7 @@
 ---
 controller_workflows:
   - name: Windows-bootstrap-azure-cac
-    organization: Default
+    organization: HTS SRE
     description: Bootstrap workflow for Windows systems in Azure
     inventory: Azure-CaC-Test
     ask_limit_on_launch: true
@@ -36,7 +36,7 @@ controller_workflows:
         unified_job_template: Windows-sumologic-production-azure-cac
 
   - name: Windows-bootstrap-aws-cac
-    organization: Default
+    organization: HTS SRE
     description: Bootstrap workflow for Windows systems in AWS
     inventory: AWS-CaC-Test
     ask_limit_on_launch: true

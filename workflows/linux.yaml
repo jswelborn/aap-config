@@ -1,7 +1,7 @@
 ---
 controller_workflows:
   - name: Linux-bootstrap-azure-cac
-    organization: Default
+    organization: HTS SRE
     description: Bootstrap workflow for Linux systems in Azure
     inventory: Azure-CaC-Test
     ask_inventory_on_launch: true
@@ -32,7 +32,7 @@ controller_workflows:
         unified_job_template: Linux-automox-production-azure-cac
 
   - name: Linux-bootstrap-aws-cac
-    organization: Default
+    organization: HTS SRE
     description: Bootstrap workflow for Linux systems in AWS
     inventory: AWS-CaC-Test
     ask_inventory_on_launch: true

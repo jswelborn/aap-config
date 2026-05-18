@@ -1,7 +1,7 @@
 ---
 controller_templates:
   - name: Windows-automox-production-aws-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP job template for Windows Automox agent deployment and lifecycle management in AWS
     job_type: run
     inventory: AWS-CaC-Test
@@ -23,7 +23,7 @@ controller_templates:
     state: present
 
   - name: Windows-automox-staging-aws-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP job template for Windows Automox agent deployment and lifecycle management in AWS
     job_type: run
     inventory: AWS-CaC-Test
@@ -45,7 +45,7 @@ controller_templates:
     state: present
 
   - name: Windows-crowdstrike-aws-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP job template for Windows CrowdStrike agent deployment and lifecycle management in AWS
     job_type: run
     inventory: AWS-CaC-Test
@@ -65,7 +65,7 @@ controller_templates:
     state: present
 
   - name: Windows-datadog-aws-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP job template for Windows Datadog agent deployment and lifecycle management in AWS
     job_type: run
     inventory: AWS-CaC-Test
@@ -85,7 +85,7 @@ controller_templates:
     state: present
 
   - name: Windows-identity-aws-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP job template for Windows identity configuration and lifecycle management in AWS
     job_type: run
     inventory: AWS-CaC-Test
@@ -105,7 +105,7 @@ controller_templates:
     state: present
 
   - name: Windows-snowagent-production-aws-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP job template for Windows ServiceNow ACC agent deployment and lifecycle management in AWS
     job_type: run
     inventory: AWS-CaC-Test
@@ -127,7 +127,7 @@ controller_templates:
     state: present
 
   - name: Windows-snowagent-staging-aws-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP job template for Windows ServiceNow ACC agent deployment and lifecycle management in AWS
     job_type: run
     inventory: AWS-CaC-Test
@@ -149,7 +149,7 @@ controller_templates:
     state: present
 
   - name: Windows-sumologic-production-aws-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP job template for Windows SumoLogic agent deployment and lifecycle management in AWS
     job_type: run
     inventory: AWS-CaC-Test
@@ -171,7 +171,7 @@ controller_templates:
     state: present
 
   - name: Windows-sumologic-staging-aws-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP job template for Windows SumoLogic agent deployment and lifecycle management in AWS
     job_type: run
     inventory: AWS-CaC-Test
@@ -193,7 +193,7 @@ controller_templates:
     state: present
 
   - name: Windows-tenable-aws-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP job template for Windows Tenable agent deployment and lifecycle management in AWS
     job_type: run
     inventory: AWS-CaC-Test

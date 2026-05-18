@@ -1,14 +1,14 @@
 ---
 controller_inventories:
   - name: Azure-CaC-Test
-    organization: Default
+    organization: HTS SRE
     description: Azure dynamic inventory managed by code
     variables:
       managed_by: aap_cac
   
 controller_inventory_sources:
   - name: Azure
-    organization: Default
+    organization: HTS SRE
     inventory: Azure-CaC-Test
     source: azure_rm
     credential: "AAP Dynamic Inventory"
@@ -45,7 +45,7 @@ controller_inventory_sources:
 
 controller_inventory_sources_update:
   - name: Azure
-    organization: Default
+    organization: HTS SRE
     inventory: Azure-CaC-Test
 
 controller_groups:

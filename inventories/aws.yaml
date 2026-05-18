@@ -1,14 +1,14 @@
 ---
 controller_inventories:
   - name: AWS-CaC-Test
-    organization: Default
+    organization: HTS SRE
     description: AWS dynamic inventory managed by code
     variables:
       managed_by: aap_cac
 
 controller_inventory_sources:
   - name: AWS
-    organization: Default
+    organization: HTS SRE
     inventory: AWS-CaC-Test
     source: ec2
     credential: "AWS Inventory"
@@ -61,7 +61,7 @@ controller_inventory_sources:
 
 controller_inventory_sources_update:
   - name: AWS
-    organization: Default
+    organization: HTS SRE
     inventory: AWS-CaC-Test
 
 controller_groups:

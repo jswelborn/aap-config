@@ -1,7 +1,7 @@
 ---
 controller_templates:
   - name: Terraform Cloud VM Post Apply - CaC
-    organization: Default
+    organization: HTS SRE
     description: Post-provision orchestration workflow for Terraform-created virtual machines
     job_type: run
     inventory: Local

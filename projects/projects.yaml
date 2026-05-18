@@ -1,7 +1,7 @@
 ---
 controller_projects:
   - name: aap-terraform-integration-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP Terraform integration project managed by CaC 
     scm_type: git
     scm_url: https://github.com/jswelborn/aap-terraform-integration.git
@@ -12,7 +12,7 @@ controller_projects:
     update_project: true
 
   - name: Linux-automox-cac
-    organization: Default
+    organization: HTS SRE
     description: Automation content for Linux Automox agent deployment and lifecycle management
     scm_type: git
     scm_url: https://github.com/jswelborn/ansible-linux-automox.git
@@ -23,7 +23,7 @@ controller_projects:
     update_project: true
 
   - name: Linux-crowdstrike-cac
-    organization: Default
+    organization: HTS SRE
     description: Automation content for Linux CrowdStrike agent deployment and lifecycle management
     scm_type: git
     scm_url: https://github.com/jswelborn/ansible-linux-crowdstrike.git
@@ -34,7 +34,7 @@ controller_projects:
     update_project: true
 
   - name: Linux-datadog-cac
-    organization: Default
+    organization: HTS SRE
     description: Automation content for Linux Datadog agent deployment and lifecycle management
     scm_type: git
     scm_url: https://github.com/jswelborn/ansible-linux-datadog.git
@@ -45,7 +45,7 @@ controller_projects:
     update_project: true
 
   - name: Linux-identity-cac
-    organization: Default
+    organization: HTS SRE
     description: Automation content for Linux identity configuration and lifecycle management
     scm_type: git
     scm_url: https://github.com/jswelborn/ansible-identity.git
@@ -57,7 +57,7 @@ controller_projects:
     update_project: true
 
   - name: Linux-snowagent-cac
-    organization: Default
+    organization: HTS SRE
     description: Automation content for Linux ServiceNow agent deployment and lifecycle management
     scm_type: git
     scm_url: https://github.com/jswelborn/ansible-linux-snowagent.git
@@ -68,7 +68,7 @@ controller_projects:
     update_project: true
 
   - name: Linux-sumologic-cac
-    organization: Default
+    organization: HTS SRE
     description: Automation content for Linux SumoLogic agent deployment and lifecycle management
     scm_type: git
     scm_url: https://github.com/jswelborn/ansible-linux-sumologic.git
@@ -79,7 +79,7 @@ controller_projects:
     update_project: true
 
   - name: Linux-tenable-cac
-    organization: Default
+    organization: HTS SRE
     description: Automation content for Linux Tenable agent deployment and lifecycle management
     scm_type: git
     scm_url: https://github.com/jswelborn/ansible-linux-tenable.git
@@ -90,7 +90,7 @@ controller_projects:
     update_project: true
 
   - name: Windows-automox-cac
-    organization: Default
+    organization: HTS SRE
     description: Automation content for Windows Automox agent deployment and lifecycle management
     scm_type: git
     scm_url: https://github.com/jswelborn/ansible-windows-automox.git
@@ -101,7 +101,7 @@ controller_projects:
     update_project: true
 
   - name: Windows-crowdstrike-cac
-    organization: Default
+    organization: HTS SRE
     description: Automation content for Windows CrowdStrike agent deployment and lifecycle management
     scm_type: git
     scm_url: https://github.com/jswelborn/ansible-windows-crowdstrike.git
@@ -112,7 +112,7 @@ controller_projects:
     update_project: true
 
   - name: Windows-datadog-cac
-    organization: Default
+    organization: HTS SRE
     description: Automation content for Windows Datadog agent deployment and lifecycle management
     scm_type: git
     scm_url: https://github.com/jswelborn/ansible-windows-datadog.git
@@ -123,7 +123,7 @@ controller_projects:
     update_project: true
 
   - name: Windows-identity-cac
-    organization: Default
+    organization: HTS SRE
     description: Automation content for Windows identity configuration and lifecycle management
     scm_type: git
     scm_url: https://github.com/jswelborn/ansible-windows-identity.git
@@ -134,7 +134,7 @@ controller_projects:
     update_project: true
 
   - name: Windows-snowagent-cac
-    organization: Default
+    organization: HTS SRE
     description: Automation content for Windows ServiceNow agent configuration and lifecycle management
     scm_type: git
     scm_url: https://github.com/jswelborn/ansible-windows-snowagent.git
@@ -145,7 +145,7 @@ controller_projects:
     update_project: true
 
   - name: Windows-sumologic-cac
-    organization: Default
+    organization: HTS SRE
     description: Automation content for Windows SumoLogic agent configuration and lifecycle management
     scm_type: git
     scm_url: https://github.com/jswelborn/ansible-windows-sumologic.git
@@ -156,7 +156,7 @@ controller_projects:
     update_project: true
 
   - name: Windows-tenable-cac
-    organization: Default
+    organization: HTS SRE
     description: Automation content for Windows Tenable agent configuration and lifecycle management
     scm_type: git
     scm_url: https://github.com/jswelborn/ansible-windows-tenable.git

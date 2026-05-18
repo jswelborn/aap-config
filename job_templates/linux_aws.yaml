@@ -1,7 +1,7 @@
 ---
 controller_templates:
   - name: Linux-automox-production-aws-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP job template for Linux Automox agent deployment and lifecycle management in AWS
     job_type: run
     inventory: AWS-CaC-Test
@@ -24,7 +24,7 @@ controller_templates:
     state: present
 
   - name: Linux-automox-staging-aws-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP job template for Linux Automox agent deployment and lifecycle management in AWS
     job_type: run
     inventory: AWS-CaC-Test
@@ -47,7 +47,7 @@ controller_templates:
     state: present
 
   - name: Linux-crowdstrike-aws-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP job template for Linux CrowdStrike agent deployment and lifecycle management in AWS
     job_type: run
     inventory: AWS-CaC-Test
@@ -68,7 +68,7 @@ controller_templates:
     state: present
 
   - name: Linux-datadog-aws-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP job template for Linux Datadog agent deployment and lifecycle management in AWS
     job_type: run
     inventory: AWS-CaC-Test
@@ -89,7 +89,7 @@ controller_templates:
     state: present
 
   - name: Linux-identity-aws-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP job template for Linux identity configuration and lifecycle management in AWS
     job_type: run
     inventory: AWS-CaC-Test
@@ -109,7 +109,7 @@ controller_templates:
     state: present
 
   - name: Linux-snowagent-production-aws-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP job template for Linux ServiceNow ACC agent deployment and lifecycle management in AWS
     job_type: run
     inventory: AWS-CaC-Test
@@ -132,7 +132,7 @@ controller_templates:
     state: present
 
   - name: Linux-snowagent-staging-aws-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP job template for Linux ServiceNow ACC agent deployment and lifecycle management in AWS
     job_type: run
     inventory: AWS-CaC-Test
@@ -155,7 +155,7 @@ controller_templates:
     state: present
 
   - name: Linux-sumologic-production-aws-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP job template for Linux SumoLogic agent deployment and lifecycle management in AWS
     job_type: run
     inventory: AWS-CaC-Test
@@ -178,7 +178,7 @@ controller_templates:
     state: present
 
   - name: Linux-sumologic-staging-aws-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP job template for Linux SumoLogic agent deployment and lifecycle management in AWS
     job_type: run
     inventory: AWS-CaC-Test
@@ -201,7 +201,7 @@ controller_templates:
     state: present
 
   - name: Linux-tenable-aws-cac
-    organization: Default
+    organization: HTS SRE
     description: AAP job template for Linux Tenable agent deployment and lifecycle management in AWS
     job_type: run
     inventory: AWS-CaC-Test
