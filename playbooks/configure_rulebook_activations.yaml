@@ -1,0 +1,12 @@
+---
+- name: Configure EDA rulebook activations in AAP
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars_files:
+    - ../rulebook_activations/rulebook_activations.yaml
+    - ../group_vars/all.yaml
+
+  roles:
+    - infra.aap_configuration.eda_rulebook_activations

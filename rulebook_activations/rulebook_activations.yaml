@@ -1,0 +1,14 @@
+---
+eda_rulebook_activations:
+  - name: aap-terraform-integration-cac
+    organization: HTS SRE
+    project: aap-terraform-integration-cac
+    rulebook: terraform.yaml
+    decision_environment: Default Decision Environment Test
+    eda_credentials:
+      - AAP Controller Credential CaC
+    event_stream: terraform-webhook-hmac-cac
+    enabled: true
+    restart_policy: never
+    log_level: error
+    variables: {}
