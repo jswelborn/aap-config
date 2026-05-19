@@ -1,8 +1,17 @@
 ---
-- name: Configure all AAP CaC components
+- name: Configure complete AAP platform as code
+  ansible.builtin.import_playbook: configure_organizations.yaml
+
+- name: Configure credential types
+  ansible.builtin.import_playbook: configure_credential_types.yaml
+
+- name: Configure credentials
+  ansible.builtin.import_playbook: configure_credentials.yaml
+
+- name: Configure projects
   ansible.builtin.import_playbook: configure_projects.yaml
 
-- name: Configure Azure inventory
+- name: Configure inventories
   ansible.builtin.import_playbook: configure_azure_inventory.yaml
 
 - name: Configure AWS inventory
@@ -28,3 +37,18 @@
 
 - name: Configure Windows workflows
   ansible.builtin.import_playbook: configure_windows_workflows.yaml
+
+- name: Configure EDA credentials
+  ansible.builtin.import_playbook: configure_eda_credentials.yaml
+
+- name: Configure EDA decision environments
+  ansible.builtin.import_playbook: configure_decision_environments.yaml
+
+- name: Configure EDA event streams
+  ansible.builtin.import_playbook: configure_event_streams.yaml
+
+- name: Configure EDA projects
+  ansible.builtin.import_playbook: configure_eda_projects.yaml
+
+- name: Configure EDA rulebook activations
+  ansible.builtin.import_playbook: configure_rulebook_activations.yaml
