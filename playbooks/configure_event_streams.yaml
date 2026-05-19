@@ -1,0 +1,12 @@
+---
+- name: Configure EDA event streams in AAP
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars_files:
+    - ../event_streams/event_streams.yaml
+    - ../group_vars/all.yaml
+
+  roles:
+    - infra.aap_configuration.eda_event_streams

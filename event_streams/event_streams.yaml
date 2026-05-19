@@ -1,0 +1,7 @@
+---
+eda_event_streams:
+  - name: terraform-webhook-hmac-cac
+    organization: HTS SRE
+    event_stream_type: hmac
+    credential_name: terraform-cloud-hmac-cac
+    forward_events: true
