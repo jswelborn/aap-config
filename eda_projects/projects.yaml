@@ -1,0 +1,9 @@
+---
+eda_projects:
+  - name: aap-terraform-integration-cac
+    description: EDA Terraform integration project managed by CaC
+    organization: HTS SRE
+    url: https://github.com/jswelborn/aap-terraform-integration.git
+    scm_branch: main
+    credential: GitHub PAT - AAP-cac
+    verify_ssl: true
