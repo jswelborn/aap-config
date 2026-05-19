@@ -1,0 +1,12 @@
+---
+- name: Configure decision environments in AAP
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars_files:
+    - ../decision_environments/decision_environments.yaml
+    - ../group_vars/all.yaml
+
+  roles:
+    - infra.aap_configuration.eda_decision_environments
