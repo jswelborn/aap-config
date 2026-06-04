@@ -1,0 +1,7 @@
+---
+controller_inventories:
+  - name: Local
+    organization: HTS SRE
+    description: Local inventory used for platform orchestration jobs
+    variables:
+      ansible_connection: local

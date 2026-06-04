@@ -1,0 +1,12 @@
+---
+- name: Configure Local inventory in AAP
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars_files:
+    - ../inventories/local.yaml
+    - ../group_vars/all.yaml
+
+  roles:
+    - infra.aap_configuration.controller_inventories

@@ -1,0 +1,9 @@
+---
+controller_instance_groups:
+  - name: azure-execution
+    policy_instance_percentage: 0
+    policy_instance_minimum: 0
+
+  - name: aws-execution
+    policy_instance_percentage: 0
+    policy_instance_minimum: 0

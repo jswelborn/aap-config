@@ -1,0 +1,14 @@
+---
+- name: Configure instance groups in AAP
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars_files:
+    - ../instance_groups/instance_groups.yaml
+    - ../group_vars/all.yaml
+
+  tasks:
+    - name: Configure instance groups
+      ansible.builtin.include_role:
+        name: infra.aap_configuration.controller_instance_groups
