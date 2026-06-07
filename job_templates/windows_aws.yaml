@@ -1,20 +1,22 @@
 ---
 controller_templates:
-  - name: Windows-automox-production-aws-cac
+  - name: Windows-automox-production-aws
     organization: HTS SRE
     description: AAP job template for Windows Automox agent deployment and lifecycle management in AWS
     job_type: run
-    inventory: AWS-CaC-Test
-    project: Windows-automox-cac
+    inventory: AWS
+    project: Windows-automox
     playbook: windows_automox.yaml
     credentials:
-      - automox-production 
-      - hetwinadmin_updated 
+      - automox-production
+      - "Windows Automation"
     instance_groups:
       - aws-execution
     execution_environment: Default execution environment
     extra_vars:
-      policy_group: production 
+      policy_group: production
+      ansible_host: !unsafe "{{ inventory_hostname }}.CompanyNet.org"
+      ansible_winrm_transport: kerberos
     prevent_instance_group_fallback: true
     job_slice_count: 1
     forks: 0
@@ -22,21 +24,23 @@ controller_templates:
     timeout: 0
     state: present
 
-  - name: Windows-automox-staging-aws-cac
+  - name: Windows-automox-staging-aws
     organization: HTS SRE
     description: AAP job template for Windows Automox agent deployment and lifecycle management in AWS
     job_type: run
-    inventory: AWS-CaC-Test
-    project: Windows-automox-cac
+    inventory: AWS
+    project: Windows-automox
     playbook: windows_automox.yaml
     credentials:
       - automox-staging 
-      - hetwinadmin_updated 
+      - "Windows Automation"
     instance_groups:
       - aws-execution
     execution_environment: Default execution environment
     extra_vars:
       policy_group: staging
+      ansible_host: !unsafe "{{ inventory_hostname }}.CompanyNet.org"
+      ansible_winrm_transport: kerberos
     prevent_instance_group_fallback: true
     job_slice_count: 1
     forks: 0
@@ -44,19 +48,22 @@ controller_templates:
     timeout: 0
     state: present
 
-  - name: Windows-crowdstrike-aws-cac
+  - name: Windows-crowdstrike-aws
     organization: HTS SRE
     description: AAP job template for Windows CrowdStrike agent deployment and lifecycle management in AWS
     job_type: run
-    inventory: AWS-CaC-Test
-    project: Windows-crowdstrike-cac
+    inventory: AWS
+    project: Windows-crowdstrike
     playbook: windows_crowdstrike.yaml
     credentials:
-      - "Crowdstrike CID" 
-      - hetwinadmin_updated 
+      - "Crowdstrike CID"
+      - "Windows Automation"
     instance_groups:
       - aws-execution
     execution_environment: Default execution environment
+    extra_vars:
+      ansible_host: !unsafe "{{ inventory_hostname }}.CompanyNet.org"
+      ansible_winrm_transport: kerberos
     prevent_instance_group_fallback: true
     job_slice_count: 1
     forks: 0
@@ -64,19 +71,22 @@ controller_templates:
     timeout: 0
     state: present
 
-  - name: Windows-datadog-aws-cac
+  - name: Windows-datadog-aws
     organization: HTS SRE
     description: AAP job template for Windows Datadog agent deployment and lifecycle management in AWS
     job_type: run
-    inventory: AWS-CaC-Test
-    project: Windows-datadog-cac
+    inventory: AWS
+    project: Windows-datadog
     playbook: windows_datadog.yaml
     credentials:
-      - "Datadog API Key" 
-      - hetwinadmin_updated
+      - "Datadog API Key"
+      - "Windows Automation"
     instance_groups:
       - aws-execution
     execution_environment: Default execution environment
+    extra_vars:
+      ansible_host: !unsafe "{{ inventory_hostname }}.CompanyNet.org"
+      ansible_winrm_transport: kerberos
     prevent_instance_group_fallback: true
     job_slice_count: 1
     forks: 0
@@ -84,12 +94,12 @@ controller_templates:
     timeout: 0
     state: present
 
-  - name: Windows-identity-aws-cac
+  - name: Windows-identity-aws
     organization: HTS SRE
     description: AAP job template for Windows identity configuration and lifecycle management in AWS
     job_type: run
-    inventory: AWS-CaC-Test
-    project: Windows-identity-cac
+    inventory: AWS
+    project: Windows-identity
     playbook: windows_identity.yaml
     credentials:
       - hetwinadmin_default
@@ -104,21 +114,45 @@ controller_templates:
     timeout: 0
     state: present
 
-  - name: Windows-snowagent-production-aws-cac
+  - name: Windows-kerberos-ready-aws
+    organization: HTS SRE
+    description: AAP job template for Windows Kerberos configuration and lifecycle management in AWS
+    job_type: run
+    inventory: AWS
+    project: Windows-kerberos-ready
+    playbook: windows_kerberos_ready.yaml
+    credentials:
+      - "Windows Automation"
+    instance_groups:
+      - aws-execution
+    execution_environment: Default execution environment
+    extra_vars:
+      ansible_host: !unsafe "{{ inventory_hostname }}.CompanyNet.org"
+      ansible_winrm_transport: kerberos
+    prevent_instance_group_fallback: true
+    job_slice_count: 1
+    forks: 0
+    verbosity: 0
+    timeout: 0
+    state: present
+
+  - name: Windows-snowagent-production-aws
     organization: HTS SRE
     description: AAP job template for Windows ServiceNow ACC agent deployment and lifecycle management in AWS
     job_type: run
-    inventory: AWS-CaC-Test
-    project: Windows-snowagent-cac
+    inventory: AWS
+    project: Windows-snowagent
     playbook: windows_snowagent.yaml
     credentials:
-      - hetwinadmin_updated
+      - "Windows Automation"
       - snowagent-production
     instance_groups:
       - aws-execution
     execution_environment: Default execution environment
     extra_vars:
       policy_group: production
+      ansible_host: !unsafe "{{ inventory_hostname }}.CompanyNet.org"
+      ansible_winrm_transport: kerberos
     prevent_instance_group_fallback: true
     job_slice_count: 1
     forks: 0
@@ -126,21 +160,23 @@ controller_templates:
     timeout: 0
     state: present
 
-  - name: Windows-snowagent-staging-aws-cac
+  - name: Windows-snowagent-staging-aws
     organization: HTS SRE
     description: AAP job template for Windows ServiceNow ACC agent deployment and lifecycle management in AWS
     job_type: run
-    inventory: AWS-CaC-Test
-    project: Windows-snowagent-cac
+    inventory: AWS
+    project: Windows-snowagent
     playbook: windows_snowagent.yaml
     credentials:
-      - hetwinadmin_updated
+      - "Windows Automation"
       - snowagent-staging
     instance_groups:
       - aws-execution
     execution_environment: Default execution environment
     extra_vars:
       policy_group: staging
+      ansible_host: !unsafe "{{ inventory_hostname }}.CompanyNet.org"
+      ansible_winrm_transport: kerberos
     prevent_instance_group_fallback: true
     job_slice_count: 1
     forks: 0
@@ -148,21 +184,23 @@ controller_templates:
     timeout: 0
     state: present
 
-  - name: Windows-sumologic-production-aws-cac
+  - name: Windows-sumologic-production-aws
     organization: HTS SRE
     description: AAP job template for Windows SumoLogic agent deployment and lifecycle management in AWS
     job_type: run
-    inventory: AWS-CaC-Test
-    project: Windows-sumologic-cac
+    inventory: AWS
+    project: Windows-sumologic
     playbook: windows_sumologic.yaml
     credentials:
-      - hetwinadmin_updated
+      - "Windows Automation"
       - windows-sumologic
     instance_groups:
       - aws-execution
     execution_environment: Default execution environment
     extra_vars:
       sumologic_environment: production
+      ansible_host: !unsafe "{{ inventory_hostname }}.CompanyNet.org"
+      ansible_winrm_transport: kerberos
     prevent_instance_group_fallback: true
     job_slice_count: 1
     forks: 0
@@ -170,21 +208,23 @@ controller_templates:
     timeout: 0
     state: present
 
-  - name: Windows-sumologic-staging-aws-cac
+  - name: Windows-sumologic-staging-aws
     organization: HTS SRE
     description: AAP job template for Windows SumoLogic agent deployment and lifecycle management in AWS
     job_type: run
-    inventory: AWS-CaC-Test
-    project: Windows-sumologic-cac
+    inventory: AWS
+    project: Windows-sumologic
     playbook: windows_sumologic.yaml
     credentials:
-      - hetwinadmin_updated
+      - "Windows Automation"
       - windows-sumologic
     instance_groups:
       - aws-execution
     execution_environment: Default execution environment
     extra_vars:
       sumologic_environment: staging
+      ansible_host: !unsafe "{{ inventory_hostname }}.CompanyNet.org"
+      ansible_winrm_transport: kerberos
     prevent_instance_group_fallback: true
     job_slice_count: 1
     forks: 0
@@ -192,21 +232,23 @@ controller_templates:
     timeout: 0
     state: present
 
-  - name: Windows-tenable-aws-cac
+  - name: Windows-tenable-aws
     organization: HTS SRE
     description: AAP job template for Windows Tenable agent deployment and lifecycle management in AWS
     job_type: run
-    inventory: AWS-CaC-Test
-    project: Windows-tenable-cac
+    inventory: AWS
+    project: Windows-tenable
     playbook: windows_tenable.yaml
     credentials:
-      - hetwinadmin_updated
+      - "Windows Automation"
       - tenable
     instance_groups:
       - aws-execution
     execution_environment: Default execution environment
     extra_vars:
       install_tenable: true
+      ansible_host: !unsafe "{{ inventory_hostname }}.CompanyNet.org"
+      ansible_winrm_transport: kerberos
     prevent_instance_group_fallback: true
     job_slice_count: 1
     forks: 0

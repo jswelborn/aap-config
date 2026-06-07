@@ -1,71 +1,71 @@
 ---
 controller_workflows:
-  - name: Windows-bootstrap-azure-cac
+  - name: Windows-bootstrap-azure
     organization: HTS SRE
     description: Bootstrap workflow for Windows systems in Azure
-    inventory: Azure-CaC-Test
+    inventory: Azure
     ask_limit_on_launch: true
     ask_variables_on_launch: true
     destroy_current_nodes: true
     simplified_workflow_nodes:
       - identifier: Windows-identity-azure
-        unified_job_template: Windows-identity-azure-cac
+        unified_job_template: Windows-identity-azure
+        success_nodes:
+          - Windows-kerberos-ready-azure
+      - identifier: Windows-kerberos-ready-azure
+        unified_job_template: Windows-kerberos-ready-azure
         success_nodes:
           - Windows-crowdstrike-azure
       - identifier: Windows-crowdstrike-azure
-        unified_job_template: Windows-crowdstrike-azure-cac
+        unified_job_template: Windows-crowdstrike-azure
         always_nodes:
           - Windows-datadog-azure
       - identifier: Windows-datadog-azure
-        unified_job_template: Windows-datadog-azure-cac
+        unified_job_template: Windows-datadog-azure
         always_nodes:
           - Windows-automox-azure
       - identifier: Windows-automox-azure
-        unified_job_template: Windows-automox-production-azure-cac
-        always_nodes:
-          - Windows-tenable-azure
-      - identifier: Windows-tenable-azure
-        unified_job_template: Windows-tenable-azure-cac
-        always_nodes:
-          - Windows-snowagent-azure
-      - identifier: Windows-snowagent-azure
-        unified_job_template: Windows-snowagent-production-azure-cac
+        unified_job_template: Windows-automox-production-azure
         always_nodes:
           - Windows-sumologic-azure
       - identifier: Windows-sumologic-azure
-        unified_job_template: Windows-sumologic-production-azure-cac
+        unified_job_template: Windows-sumologic-production-azure
+        always_nodes:
+          - Windows-snowagent-azure
+      - identifier: Windows-snowagent-azure
+        unified_job_template: Windows-snowagent-production-azure
 
-  - name: Windows-bootstrap-aws-cac
+  - name: Windows-bootstrap-aws
     organization: HTS SRE
     description: Bootstrap workflow for Windows systems in AWS
-    inventory: AWS-CaC-Test
+    inventory: AWS
     ask_limit_on_launch: true
     ask_variables_on_launch: true
     destroy_current_nodes: true
     simplified_workflow_nodes:
       - identifier: Windows-identity-aws
-        unified_job_template: Windows-identity-aws-cac
+        unified_job_template: Windows-identity-aws
+        success_nodes:
+          - Windows-kerberos-ready-aws
+      - identifier: Windows-kerberos-ready-aws
+        unified_job_template: Windows-kerberos-ready-aws
         success_nodes:
           - Windows-crowdstrike-aws
       - identifier: Windows-crowdstrike-aws
-        unified_job_template: Windows-crowdstrike-aws-cac
+        unified_job_template: Windows-crowdstrike-aws
         always_nodes:
           - Windows-datadog-aws
       - identifier: Windows-datadog-aws
-        unified_job_template: Windows-datadog-aws-cac
+        unified_job_template: Windows-datadog-aws
         always_nodes:
           - Windows-automox-aws
       - identifier: Windows-automox-aws
-        unified_job_template: Windows-automox-production-aws-cac
-        always_nodes:
-          - Windows-tenable-aws
-      - identifier: Windows-tenable-aws
-        unified_job_template: Windows-tenable-aws-cac
-        always_nodes:
-          - Windows-snowagent-aws
-      - identifier: Windows-snowagent-aws
-        unified_job_template: Windows-snowagent-production-aws-cac
+        unified_job_template: Windows-automox-production-aws
         always_nodes:
           - Windows-sumologic-aws
       - identifier: Windows-sumologic-aws
-        unified_job_template: Windows-sumologic-production-aws-cac
+        unified_job_template: Windows-sumologic-production-aws
+        always_nodes:
+          - Windows-snowagent-aws
+      - identifier: Windows-snowagent-aws
+        unified_job_template: Windows-snowagent-production-aws
