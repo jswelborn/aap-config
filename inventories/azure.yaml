@@ -1,6 +1,6 @@
 ---
 controller_inventories:
-  - name: Azure-CaC-Test
+  - name: Azure
     organization: HTS SRE
     description: Azure dynamic inventory managed by code
     variables:
@@ -9,9 +9,9 @@ controller_inventories:
 controller_inventory_sources:
   - name: Azure
     organization: HTS SRE
-    inventory: Azure-CaC-Test
+    inventory: Azure
     source: azure_rm
-    credential: "AAP Dynamic Inventory"
+    credential: "Azure Inventory"
     execution_environment: "Default execution environment"
     overwrite: true
     overwrite_vars: true
@@ -46,11 +46,11 @@ controller_inventory_sources:
 controller_inventory_sources_update:
   - name: Azure
     organization: HTS SRE
-    inventory: Azure-CaC-Test
+    inventory: Azure
 
 controller_groups:
-  - name: Azure_Windows_Config
-    inventory: Azure-CaC-Test
+  - name: Azure_Windows_Bootstrap_Config
+    inventory: Azure
     variables:
       ansible_connection: winrm
       ansible_port: 5985
@@ -62,3 +62,13 @@ controller_groups:
       snowcmdb_user: COMPANYNET\snowcmdb
     children:
       - Windows
+
+  - name: Azure_Windows_Post_Domain_Join_Config
+    inventory: Azure
+    variables:
+      ansible_connection: winrm
+      ansible_port: 5985
+      ansible_host: "{{ inventory_hostname }}.CompanyNet.org"
+      ansible_winrm_transport: kerberos
+      ansible_winrm_server_cert_validation: ignore
+      ansible_shell_type: powershell

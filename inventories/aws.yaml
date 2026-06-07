@@ -1,6 +1,6 @@
 ---
 controller_inventories:
-  - name: AWS-CaC-Test
+  - name: AWS
     organization: HTS SRE
     description: AWS dynamic inventory managed by code
     variables:
@@ -9,7 +9,7 @@ controller_inventories:
 controller_inventory_sources:
   - name: AWS
     organization: HTS SRE
-    inventory: AWS-CaC-Test
+    inventory: AWS
     source: ec2
     credential: "AWS Inventory"
     execution_environment: "Default execution environment"
@@ -62,11 +62,11 @@ controller_inventory_sources:
 controller_inventory_sources_update:
   - name: AWS
     organization: HTS SRE
-    inventory: AWS-CaC-Test
+    inventory: AWS
 
 controller_groups:
-  - name: AWS_Windows_Config
-    inventory: AWS-CaC-Test
+  - name: AWS_Windows_Bootstrap_Config
+    inventory: AWS
     variables:
       ansible_connection: winrm
       ansible_port: 5985
@@ -78,3 +78,13 @@ controller_groups:
       snowcmdb_user: COMPANYNET\snowcmdb
     children:
       - Windows
+
+  - name: AWS_Windows_Post_Domain_Join_Config
+    inventory: AWS
+    variables:
+      ansible_connection: winrm
+      ansible_port: 5985
+      ansible_host: "{{ inventory_hostname }}.CompanyNet.org"
+      ansible_winrm_transport: kerberos
+      ansible_winrm_server_cert_validation: ignore
+      ansible_shell_type: powershell
