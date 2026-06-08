@@ -11,11 +11,17 @@
 - name: Configure projects
   ansible.builtin.import_playbook: configure_projects.yaml
 
-- name: Configure inventories
+- name: Configure instance groups
+  ansible.builtin.import_playbook: configure_instance_groups.yaml
+
+- name: Configure Azure inventory
   ansible.builtin.import_playbook: configure_azure_inventory.yaml
 
 - name: Configure AWS inventory
   ansible.builtin.import_playbook: configure_aws_inventory.yaml
+
+- name: Configure Local inventory
+  ansible.builtin.import_playbook: configure_local_inventory.yaml
 
 - name: Configure Linux Azure job templates
   ansible.builtin.import_playbook: configure_linux_azure_job_templates.yaml
