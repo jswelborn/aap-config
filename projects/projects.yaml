@@ -1,8 +1,8 @@
 ---
 controller_projects:
-  - name: aap-terraform-integration-cac
+  - name: aap-terraform-integration
     organization: HTS SRE
-    description: AAP Terraform integration project managed by CaC 
+    description: Terraform provisioning and post-build automation workflows managed through Ansible Automation Platform and Event-Driven Ansible 
     scm_type: git
     scm_url: https://github.com/jswelborn/aap-terraform-integration.git
     scm_branch: main
@@ -11,7 +11,18 @@ controller_projects:
     wait: true
     update_project: true
 
-  - name: Linux-automox-cac
+  - name: Linux-postbuild
+    organization: HTS SRE
+    description: Linux postbuild automation for filesystem expansion, hostname configuration, and baseline OS preparation
+    scm_type: git
+    scm_url: https://github.com/jswelborn/ansible-linux-postbuild.git
+    scm_branch: main
+    scm_update_on_launch: true
+    default_environment: Default execution environment
+    wait: true
+    update_project: true
+
+  - name: Linux-automox
     organization: HTS SRE
     description: Automation content for Linux Automox agent deployment and lifecycle management
     scm_type: git
@@ -22,7 +33,7 @@ controller_projects:
     wait: true
     update_project: true
 
-  - name: Linux-crowdstrike-cac
+  - name: Linux-crowdstrike
     organization: HTS SRE
     description: Automation content for Linux CrowdStrike agent deployment and lifecycle management
     scm_type: git
@@ -33,7 +44,7 @@ controller_projects:
     wait: true
     update_project: true
 
-  - name: Linux-datadog-cac
+  - name: Linux-datadog
     organization: HTS SRE
     description: Automation content for Linux Datadog agent deployment and lifecycle management
     scm_type: git
@@ -44,7 +55,7 @@ controller_projects:
     wait: true
     update_project: true
 
-  - name: Linux-identity-cac
+  - name: Linux-identity
     organization: HTS SRE
     description: Automation content for Linux identity configuration and lifecycle management
     scm_type: git
@@ -56,7 +67,7 @@ controller_projects:
     wait: true
     update_project: true
 
-  - name: Linux-snowagent-cac
+  - name: Linux-snowagent
     organization: HTS SRE
     description: Automation content for Linux ServiceNow agent deployment and lifecycle management
     scm_type: git
@@ -67,7 +78,7 @@ controller_projects:
     wait: true
     update_project: true
 
-  - name: Linux-sumologic-cac
+  - name: Linux-sumologic
     organization: HTS SRE
     description: Automation content for Linux SumoLogic agent deployment and lifecycle management
     scm_type: git
@@ -78,7 +89,7 @@ controller_projects:
     wait: true
     update_project: true
 
-  - name: Linux-tenable-cac
+  - name: Linux-tenable
     organization: HTS SRE
     description: Automation content for Linux Tenable agent deployment and lifecycle management
     scm_type: git
@@ -89,7 +100,7 @@ controller_projects:
     wait: true
     update_project: true
 
-  - name: Windows-automox-cac
+  - name: Windows-automox
     organization: HTS SRE
     description: Automation content for Windows Automox agent deployment and lifecycle management
     scm_type: git
@@ -100,7 +111,7 @@ controller_projects:
     wait: true
     update_project: true
 
-  - name: Windows-crowdstrike-cac
+  - name: Windows-crowdstrike
     organization: HTS SRE
     description: Automation content for Windows CrowdStrike agent deployment and lifecycle management
     scm_type: git
@@ -111,7 +122,7 @@ controller_projects:
     wait: true
     update_project: true
 
-  - name: Windows-datadog-cac
+  - name: Windows-datadog
     organization: HTS SRE
     description: Automation content for Windows Datadog agent deployment and lifecycle management
     scm_type: git
@@ -122,7 +133,7 @@ controller_projects:
     wait: true
     update_project: true
 
-  - name: Windows-identity-cac
+  - name: Windows-identity
     organization: HTS SRE
     description: Automation content for Windows identity configuration and lifecycle management
     scm_type: git
@@ -133,7 +144,18 @@ controller_projects:
     wait: true
     update_project: true
 
-  - name: Windows-snowagent-cac
+  - name: Windows-kerberos-ready
+    organization: HTS SRE
+    description: Automation content for Windows Kerberos configuration and lifecycle management
+    scm_type: git
+    scm_url: https://github.com/jswelborn/ansible-windows-kerberos-ready.git
+    scm_branch: main
+    scm_update_on_launch: true
+    default_environment: Default execution environment
+    wait: true
+    update_project: true
+
+  - name: Windows-snowagent
     organization: HTS SRE
     description: Automation content for Windows ServiceNow agent configuration and lifecycle management
     scm_type: git
@@ -144,7 +166,7 @@ controller_projects:
     wait: true
     update_project: true
 
-  - name: Windows-sumologic-cac
+  - name: Windows-sumologic
     organization: HTS SRE
     description: Automation content for Windows SumoLogic agent configuration and lifecycle management
     scm_type: git
@@ -155,7 +177,7 @@ controller_projects:
     wait: true
     update_project: true
 
-  - name: Windows-tenable-cac
+  - name: Windows-tenable
     organization: HTS SRE
     description: Automation content for Windows Tenable agent configuration and lifecycle management
     scm_type: git

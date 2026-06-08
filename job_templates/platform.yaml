@@ -1,11 +1,11 @@
 ---
 controller_templates:
-  - name: Terraform Cloud VM Post Apply - CaC
+  - name: Terraform Cloud VM Post Apply
     organization: HTS SRE
     description: Post-provision orchestration workflow for Terraform-created virtual machines
     job_type: run
     inventory: Local
-    project: aap-terraform-integration-cac
+    project: aap-terraform-integration
     playbook: playbooks/terraform_cloud_post_apply.yaml
     credentials:
       - AAP Controller Credential
