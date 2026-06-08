@@ -1,11 +1,11 @@
 ---
 controller_templates:
-  - name: Linux-automox-production-aws-cac
+  - name: Linux-automox-production-aws
     organization: HTS SRE
     description: AAP job template for Linux Automox agent deployment and lifecycle management in AWS
     job_type: run
-    inventory: AWS-CaC-Test
-    project: Linux-automox-cac
+    inventory: AWS
+    project: Linux-automox
     playbook: linux_automox.yaml
     credentials:
       - automox-production 
@@ -23,12 +23,12 @@ controller_templates:
     timeout: 0
     state: present
 
-  - name: Linux-automox-staging-aws-cac
+  - name: Linux-automox-staging-aws
     organization: HTS SRE
     description: AAP job template for Linux Automox agent deployment and lifecycle management in AWS
     job_type: run
-    inventory: AWS-CaC-Test
-    project: Linux-automox-cac
+    inventory: AWS
+    project: Linux-automox
     playbook: linux_automox.yaml
     credentials:
       - automox-staging 
@@ -46,12 +46,12 @@ controller_templates:
     timeout: 0
     state: present
 
-  - name: Linux-crowdstrike-aws-cac
+  - name: Linux-crowdstrike-aws
     organization: HTS SRE
     description: AAP job template for Linux CrowdStrike agent deployment and lifecycle management in AWS
     job_type: run
-    inventory: AWS-CaC-Test
-    project: Linux-crowdstrike-cac
+    inventory: AWS
+    project: Linux-crowdstrike
     playbook: linux_crowdstrike.yaml
     credentials:
       - "Crowdstrike CID" 
@@ -67,12 +67,12 @@ controller_templates:
     timeout: 0
     state: present
 
-  - name: Linux-datadog-aws-cac
+  - name: Linux-datadog-aws
     organization: HTS SRE
     description: AAP job template for Linux Datadog agent deployment and lifecycle management in AWS
     job_type: run
-    inventory: AWS-CaC-Test
-    project: Linux-datadog-cac
+    inventory: AWS
+    project: Linux-datadog
     playbook: linux_datadog.yaml
     credentials:
       - "Datadog API Key" 
@@ -88,12 +88,12 @@ controller_templates:
     timeout: 0
     state: present
 
-  - name: Linux-identity-aws-cac
+  - name: Linux-identity-aws
     organization: HTS SRE
     description: AAP job template for Linux identity configuration and lifecycle management in AWS
     job_type: run
-    inventory: AWS-CaC-Test
-    project: Linux-identity-cac
+    inventory: AWS
+    project: Linux-identity
     playbook: linux_identity.yaml
     credentials:
       - "AWS ec2-user SSH"
@@ -108,12 +108,12 @@ controller_templates:
     timeout: 0
     state: present
 
-  - name: Linux-snowagent-production-aws-cac
+  - name: Linux-snowagent-production-aws
     organization: HTS SRE
     description: AAP job template for Linux ServiceNow ACC agent deployment and lifecycle management in AWS
     job_type: run
-    inventory: AWS-CaC-Test
-    project: Linux-snowagent-cac
+    inventory: AWS
+    project: Linux-snowagent
     playbook: linux_snowagent.yaml
     credentials:
       - hetroot
@@ -131,12 +131,12 @@ controller_templates:
     timeout: 0
     state: present
 
-  - name: Linux-snowagent-staging-aws-cac
+  - name: Linux-snowagent-staging-aws
     organization: HTS SRE
     description: AAP job template for Linux ServiceNow ACC agent deployment and lifecycle management in AWS
     job_type: run
-    inventory: AWS-CaC-Test
-    project: Linux-snowagent-cac
+    inventory: AWS
+    project: Linux-snowagent
     playbook: linux_snowagent.yaml
     credentials:
       - hetroot
@@ -154,12 +154,12 @@ controller_templates:
     timeout: 0
     state: present
 
-  - name: Linux-sumologic-production-aws-cac
+  - name: Linux-sumologic-production-aws
     organization: HTS SRE
     description: AAP job template for Linux SumoLogic agent deployment and lifecycle management in AWS
     job_type: run
-    inventory: AWS-CaC-Test
-    project: Linux-sumologic-cac
+    inventory: AWS
+    project: Linux-sumologic
     playbook: linux_sumologic.yaml
     credentials:
       - hetroot
@@ -177,12 +177,12 @@ controller_templates:
     timeout: 0
     state: present
 
-  - name: Linux-sumologic-staging-aws-cac
+  - name: Linux-sumologic-staging-aws
     organization: HTS SRE
     description: AAP job template for Linux SumoLogic agent deployment and lifecycle management in AWS
     job_type: run
-    inventory: AWS-CaC-Test
-    project: Linux-sumologic-cac
+    inventory: AWS
+    project: Linux-sumologic
     playbook: linux_sumologic.yaml
     credentials:
       - hetroot
@@ -200,12 +200,12 @@ controller_templates:
     timeout: 0
     state: present
 
-  - name: Linux-tenable-aws-cac
+  - name: Linux-tenable-aws
     organization: HTS SRE
     description: AAP job template for Linux Tenable agent deployment and lifecycle management in AWS
     job_type: run
-    inventory: AWS-CaC-Test
-    project: Linux-tenable-cac
+    inventory: AWS
+    project: Linux-tenable
     playbook: linux_tenable.yaml
     credentials:
       - hetroot

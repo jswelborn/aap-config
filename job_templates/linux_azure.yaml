@@ -1,11 +1,11 @@
 ---
 controller_templates:
-  - name: Linux-automox-production-azure-cac
+  - name: Linux-automox-production-azure
     organization: HTS SRE
     description: AAP job template for Linux Automox agent deployment and lifecycle management in Azure
     job_type: run
-    inventory: Azure-CaC-Test
-    project: Linux-automox-cac
+    inventory: Azure
+    project: Linux-automox
     playbook: linux_automox.yaml
     credentials:
       - automox-production 
@@ -23,12 +23,12 @@ controller_templates:
     timeout: 0
     state: present
 
-  - name: Linux-automox-staging-azure-cac
+  - name: Linux-automox-staging-azure
     organization: HTS SRE
     description: AAP job template for Linux Automox agent deployment and lifecycle management in Azure
     job_type: run
-    inventory: Azure-CaC-Test
-    project: Linux-automox-cac
+    inventory: Azure
+    project: Linux-automox
     playbook: linux_automox.yaml
     credentials:
       - automox-staging 
@@ -46,12 +46,12 @@ controller_templates:
     timeout: 0
     state: present
 
-  - name: Linux-crowdstrike-azure-cac
+  - name: Linux-crowdstrike-azure
     organization: HTS SRE
     description: AAP job template for Linux CrowdStrike agent deployment and lifecycle management in Azure
     job_type: run
-    inventory: Azure-CaC-Test
-    project: Linux-crowdstrike-cac
+    inventory: Azure
+    project: Linux-crowdstrike
     playbook: linux_crowdstrike.yaml
     credentials:
       - "Crowdstrike CID" 
@@ -67,12 +67,12 @@ controller_templates:
     timeout: 0
     state: present
 
-  - name: Linux-datadog-azure-cac
+  - name: Linux-datadog-azure
     organization: HTS SRE
     description: AAP job template for Linux Datadog agent deployment and lifecycle management in Azure
     job_type: run
-    inventory: Azure-CaC-Test
-    project: Linux-datadog-cac
+    inventory: Azure
+    project: Linux-datadog
     playbook: linux_datadog.yaml
     credentials:
       - "Datadog API Key" 
@@ -88,12 +88,12 @@ controller_templates:
     timeout: 0
     state: present
 
-  - name: Linux-identity-azure-cac
+  - name: Linux-identity-azure
     organization: HTS SRE
     description: AAP job template for Linux identity configuration and lifecycle management in Azure
     job_type: run
-    inventory: Azure-CaC-Test
-    project: Linux-identity-cac
+    inventory: Azure
+    project: Linux-identity
     playbook: linux_identity.yaml
     credentials:
       - hetroot
@@ -108,12 +108,12 @@ controller_templates:
     timeout: 0
     state: present
 
-  - name: Linux-snowagent-production-azure-cac
+  - name: Linux-snowagent-production-azure
     organization: HTS SRE
     description: AAP job template for Linux ServiceNow ACC agent deployment and lifecycle management in Azure
     job_type: run
-    inventory: Azure-CaC-Test
-    project: Linux-snowagent-cac
+    inventory: Azure
+    project: Linux-snowagent
     playbook: linux_snowagent.yaml
     credentials:
       - hetroot
@@ -131,12 +131,12 @@ controller_templates:
     timeout: 0
     state: present
 
-  - name: Linux-snowagent-staging-azure-cac
+  - name: Linux-snowagent-staging-azure
     organization: HTS SRE
     description: AAP job template for Linux ServiceNow ACC agent deployment and lifecycle management in Azure
     job_type: run
-    inventory: Azure-CaC-Test
-    project: Linux-snowagent-cac
+    inventory: Azure
+    project: Linux-snowagent
     playbook: linux_snowagent.yaml
     credentials:
       - hetroot
@@ -154,12 +154,12 @@ controller_templates:
     timeout: 0
     state: present
 
-  - name: Linux-sumologic-production-azure-cac
+  - name: Linux-sumologic-production-azure
     organization: HTS SRE
     description: AAP job template for Linux SumoLogic agent deployment and lifecycle management in Azure
     job_type: run
-    inventory: Azure-CaC-Test
-    project: Linux-sumologic-cac
+    inventory: Azure
+    project: Linux-sumologic
     playbook: linux_sumologic.yaml
     credentials:
       - hetroot
@@ -177,12 +177,12 @@ controller_templates:
     timeout: 0
     state: present
 
-  - name: Linux-sumologic-staging-azure-cac
+  - name: Linux-sumologic-staging-azure
     organization: HTS SRE
     description: AAP job template for Linux SumoLogic agent deployment and lifecycle management in Azure
     job_type: run
-    inventory: Azure-CaC-Test
-    project: Linux-sumologic-cac
+    inventory: Azure
+    project: Linux-sumologic
     playbook: linux_sumologic.yaml
     credentials:
       - hetroot
@@ -200,12 +200,12 @@ controller_templates:
     timeout: 0
     state: present
 
-  - name: Linux-tenable-azure-cac
+  - name: Linux-tenable-azure
     organization: HTS SRE
     description: AAP job template for Linux Tenable agent deployment and lifecycle management in Azure
     job_type: run
-    inventory: Azure-CaC-Test
-    project: Linux-tenable-cac
+    inventory: Azure
+    project: Linux-tenable
     playbook: linux_tenable.yaml
     credentials:
       - hetroot

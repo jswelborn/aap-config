@@ -1,63 +1,57 @@
 ---
 controller_workflows:
-  - name: Linux-bootstrap-azure-cac
+  - name: Linux-bootstrap-azure
     organization: HTS SRE
     description: Bootstrap workflow for Linux systems in Azure
-    inventory: Azure-CaC-Test
+    inventory: Azure
     ask_inventory_on_launch: true
     ask_limit_on_launch: true
     ask_variables_on_launch: true
     destroy_current_nodes: true
     simplified_workflow_nodes:
       - identifier: Linux-identity-azure
-        unified_job_template: Linux-identity-azure-cac
+        unified_job_template: Linux-identity-azure
         success_nodes:
           - linux-sumologic-azure 
           - linux-crowdstrike-azure
           - linux-snowagent-azure 
           - linux-datadog-azure 
-          - linux-tenable-azure
           - linux-automox-azure
       - identifier: linux-sumologic-azure
-        unified_job_template: Linux-sumologic-production-azure-cac
+        unified_job_template: Linux-sumologic-production-azure
       - identifier: linux-crowdstrike-azure
-        unified_job_template: Linux-crowdstrike-azure-cac
+        unified_job_template: Linux-crowdstrike-azure
       - identifier: linux-snowagent-azure
-        unified_job_template: Linux-snowagent-production-azure-cac
+        unified_job_template: Linux-snowagent-production-azure
       - identifier: linux-datadog-azure
-        unified_job_template: Linux-datadog-azure-cac
-      - identifier: linux-tenable-azure
-        unified_job_template: Linux-tenable-azure-cac
+        unified_job_template: Linux-datadog-azure
       - identifier: linux-automox-azure
-        unified_job_template: Linux-automox-production-azure-cac
+        unified_job_template: Linux-automox-production-azure
 
-  - name: Linux-bootstrap-aws-cac
+  - name: Linux-bootstrap-aws
     organization: HTS SRE
     description: Bootstrap workflow for Linux systems in AWS
-    inventory: AWS-CaC-Test
+    inventory: AWS
     ask_inventory_on_launch: true
     ask_limit_on_launch: true
     ask_variables_on_launch: true
     destroy_current_nodes: true
     simplified_workflow_nodes:
       - identifier: Linux-identity-aws
-        unified_job_template: Linux-identity-aws-cac
+        unified_job_template: Linux-identity-aws
         success_nodes:
           - linux-sumologic-aws
           - linux-crowdstrike-aws
           - linux-snowagent-aws
           - linux-datadog-aws
-          - linux-tenable-aws
           - linux-automox-aws
       - identifier: linux-sumologic-aws
-        unified_job_template: Linux-sumologic-production-aws-cac
+        unified_job_template: Linux-sumologic-production-aws
       - identifier: linux-crowdstrike-aws
-        unified_job_template: Linux-crowdstrike-aws-cac
+        unified_job_template: Linux-crowdstrike-aws
       - identifier: linux-snowagent-aws
-        unified_job_template: Linux-snowagent-production-aws-cac
+        unified_job_template: Linux-snowagent-production-aws
       - identifier: linux-datadog-aws
-        unified_job_template: Linux-datadog-aws-cac
-      - identifier: linux-tenable-aws
-        unified_job_template: Linux-tenable-aws-cac
+        unified_job_template: Linux-datadog-aws
       - identifier: linux-automox-aws
-        unified_job_template: Linux-automox-production-aws-cac
+        unified_job_template: Linux-automox-production-aws
