@@ -13,6 +13,7 @@ controller_templates:
     instance_groups:
       - azure-execution
     execution_environment: Default execution environment
+    ask_limit_on_launch: true
     extra_vars:
       policy_group: production 
     become_enabled: true
@@ -36,6 +37,7 @@ controller_templates:
     instance_groups:
       - azure-execution
     execution_environment: Default execution environment
+    ask_limit_on_launch: true
     extra_vars:
       policy_group: staging
     become_enabled: true
@@ -59,6 +61,7 @@ controller_templates:
     instance_groups:
       - azure-execution
     execution_environment: Default execution environment
+    ask_limit_on_launch: true
     become_enabled: true
     prevent_instance_group_fallback: true
     job_slice_count: 1
@@ -80,6 +83,7 @@ controller_templates:
     instance_groups:
       - azure-execution
     execution_environment: Default execution environment
+    ask_limit_on_launch: true
     become_enabled: true
     prevent_instance_group_fallback: true
     job_slice_count: 1
@@ -100,6 +104,7 @@ controller_templates:
     instance_groups:
       - azure-execution
     execution_environment: Default execution environment
+    ask_limit_on_launch: true
     become_enabled: true
     prevent_instance_group_fallback: true
     job_slice_count: 1
@@ -121,6 +126,7 @@ controller_templates:
     instance_groups:
       - azure-execution
     execution_environment: Default execution environment
+    ask_limit_on_launch: true
     extra_vars:
       policy_group: production
     become_enabled: true
@@ -144,6 +150,7 @@ controller_templates:
     instance_groups:
       - azure-execution
     execution_environment: Default execution environment
+    ask_limit_on_launch: true
     extra_vars:
       policy_group: staging
     become_enabled: true
@@ -167,6 +174,7 @@ controller_templates:
     instance_groups:
       - azure-execution
     execution_environment: Default execution environment
+    ask_limit_on_launch: true
     extra_vars:
       sumologic_environment: production
     become_enabled: true
@@ -190,6 +198,7 @@ controller_templates:
     instance_groups:
       - azure-execution
     execution_environment: Default execution environment
+    ask_limit_on_launch: true
     extra_vars:
       sumologic_environment: staging
     become_enabled: true
@@ -213,6 +222,7 @@ controller_templates:
     instance_groups:
       - azure-execution
     execution_environment: Default execution environment
+    ask_limit_on_launch: true
     extra_vars:
       install_tenable: true
     become_enabled: true
