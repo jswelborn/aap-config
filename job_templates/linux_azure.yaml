@@ -24,6 +24,27 @@ controller_templates:
     timeout: 0
     state: present
 
+  - name: Linux-postbuild-azure
+    organization: HTS SRE
+    description: Linux postbuild automation for filesystem expansion, hostname configuration, and baseline OS preparation
+    job_type: run
+    inventory: Azure
+    project: Linux-postbuild
+    playbook: linux_postbuild.yaml
+    credentials:
+      - hetroot
+    instance_groups:
+      - azure-execution
+    execution_environment: Default execution environment
+    ask_limit_on_launch: true
+    become_enabled: true
+    prevent_instance_group_fallback: true
+    job_slice_count: 1
+    forks: 0
+    verbosity: 0
+    timeout: 0
+    state: present
+
   - name: Linux-automox-staging-azure
     organization: HTS SRE
     description: AAP job template for Linux Automox agent deployment and lifecycle management in Azure
@@ -225,6 +246,132 @@ controller_templates:
     ask_limit_on_launch: true
     extra_vars:
       install_tenable: true
+    become_enabled: true
+    prevent_instance_group_fallback: true
+    job_slice_count: 1
+    forks: 0
+    verbosity: 0
+    timeout: 0
+    state: present
+
+  - name: Linux-datadog-check-azure
+    organization: HTS SRE
+    description: AAP job template for Linux Datadog agent compliance check in Azure
+    job_type: run
+    inventory: Azure
+    project: Linux-datadog
+    playbook: linux_datadog_check.yaml
+    credentials:
+      - hetroot
+    instance_groups:
+      - azure-execution
+    execution_environment: Default execution environment
+    ask_limit_on_launch: true
+    become_enabled: true
+    prevent_instance_group_fallback: true
+    job_slice_count: 1
+    forks: 0
+    verbosity: 0
+    timeout: 0
+    state: present
+
+  - name: Linux-crowdstrike-check-azure
+    organization: HTS SRE
+    description: AAP job template for Linux CrowdStrike Falcon compliance check in Azure
+    job_type: run
+    inventory: Azure
+    project: Linux-crowdstrike
+    playbook: linux_crowdstrike_check.yaml
+    credentials:
+      - hetroot
+    instance_groups:
+      - azure-execution
+    execution_environment: Default execution environment
+    ask_limit_on_launch: true
+    become_enabled: true
+    prevent_instance_group_fallback: true
+    job_slice_count: 1
+    forks: 0
+    verbosity: 0
+    timeout: 0
+    state: present
+
+  - name: Linux-snowagent-check-azure
+    organization: HTS SRE
+    description: AAP job template for Linux Snow Agent compliance check in Azure
+    job_type: run
+    inventory: Azure
+    project: Linux-snowagent
+    playbook: linux_snowagent_check.yaml
+    credentials:
+      - hetroot
+    instance_groups:
+      - azure-execution
+    execution_environment: Default execution environment
+    ask_limit_on_launch: true
+    become_enabled: true
+    prevent_instance_group_fallback: true
+    job_slice_count: 1
+    forks: 0
+    verbosity: 0
+    timeout: 0
+    state: present
+
+  - name: Linux-sumologic-check-azure
+    organization: HTS SRE
+    description: AAP job template for Linux Sumo Logic Collector compliance check in Azure
+    job_type: run
+    inventory: Azure
+    project: Linux-sumologic
+    playbook: linux_sumologic_check.yaml
+    credentials:
+      - hetroot
+    instance_groups:
+      - azure-execution
+    execution_environment: Default execution environment
+    ask_limit_on_launch: true
+    become_enabled: true
+    prevent_instance_group_fallback: true
+    job_slice_count: 1
+    forks: 0
+    verbosity: 0
+    timeout: 0
+    state: present
+
+  - name: Linux-tenable-check-azure
+    organization: HTS SRE
+    description: AAP job template for Linux Tenable Agent compliance check in Azure
+    job_type: run
+    inventory: Azure
+    project: Linux-tenable
+    playbook: linux_tenable_check.yaml
+    credentials:
+      - hetroot
+    instance_groups:
+      - azure-execution
+    execution_environment: Default execution environment
+    ask_limit_on_launch: true
+    become_enabled: true
+    prevent_instance_group_fallback: true
+    job_slice_count: 1
+    forks: 0
+    verbosity: 0
+    timeout: 0
+    state: present
+
+  - name: Linux-automox-check-azure
+    organization: HTS SRE
+    description: AAP job template for Linux Automox agent compliance check in Azure
+    job_type: run
+    inventory: Azure
+    project: Linux-automox
+    playbook: linux_automox_check.yaml
+    credentials:
+      - hetroot
+    instance_groups:
+      - azure-execution
+    execution_environment: Default execution environment
+    ask_limit_on_launch: true
     become_enabled: true
     prevent_instance_group_fallback: true
     job_slice_count: 1
