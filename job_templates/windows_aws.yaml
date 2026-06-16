@@ -12,12 +12,14 @@ controller_templates:
       - "Windows Automation"
     instance_groups:
       - aws-execution
-    execution_environment: Default execution environment
+    execution_environment: EE Windows Kerberos
     ask_limit_on_launch: true
+    ask_variables_on_launch: true
     extra_vars:
       policy_group: production
       ansible_host: !unsafe "{{ inventory_hostname }}.CompanyNet.org"
       ansible_winrm_transport: kerberos
+      ansible_winrm_kinit_mode: manual
     prevent_instance_group_fallback: true
     job_slice_count: 1
     forks: 0
@@ -37,12 +39,14 @@ controller_templates:
       - "Windows Automation"
     instance_groups:
       - aws-execution
-    execution_environment: Default execution environment
+    execution_environment: EE Windows Kerberos
     ask_limit_on_launch: true
+    ask_variables_on_launch: true
     extra_vars:
       policy_group: staging
       ansible_host: !unsafe "{{ inventory_hostname }}.CompanyNet.org"
       ansible_winrm_transport: kerberos
+      ansible_winrm_kinit_mode: manual
     prevent_instance_group_fallback: true
     job_slice_count: 1
     forks: 0
@@ -62,11 +66,13 @@ controller_templates:
       - "Windows Automation"
     instance_groups:
       - aws-execution
-    execution_environment: Default execution environment
+    execution_environment: EE Windows Kerberos
     ask_limit_on_launch: true
+    ask_variables_on_launch: true
     extra_vars:
       ansible_host: !unsafe "{{ inventory_hostname }}.CompanyNet.org"
       ansible_winrm_transport: kerberos
+      ansible_winrm_kinit_mode: manual
     prevent_instance_group_fallback: true
     job_slice_count: 1
     forks: 0
@@ -86,11 +92,13 @@ controller_templates:
       - "Windows Automation"
     instance_groups:
       - aws-execution
-    execution_environment: Default execution environment
+    execution_environment: EE Windows Kerberos
     ask_limit_on_launch: true
+    ask_variables_on_launch: true
     extra_vars:
       ansible_host: !unsafe "{{ inventory_hostname }}.CompanyNet.org"
       ansible_winrm_transport: kerberos
+      ansible_winrm_kinit_mode: manual
     prevent_instance_group_fallback: true
     job_slice_count: 1
     forks: 0
@@ -112,6 +120,7 @@ controller_templates:
       - aws-execution
     execution_environment: Default execution environment
     ask_limit_on_launch: true
+    ask_variables_on_launch: true
     prevent_instance_group_fallback: true
     job_slice_count: 1
     forks: 0
@@ -130,11 +139,13 @@ controller_templates:
       - "Windows Automation"
     instance_groups:
       - aws-execution
-    execution_environment: Default execution environment
+    execution_environment: EE Windows Kerberos
     ask_limit_on_launch: true
+    ask_variables_on_launch: true
     extra_vars:
       ansible_host: !unsafe "{{ inventory_hostname }}.CompanyNet.org"
       ansible_winrm_transport: kerberos
+      ansible_winrm_kinit_mode: manual
     prevent_instance_group_fallback: true
     job_slice_count: 1
     forks: 0
@@ -154,12 +165,14 @@ controller_templates:
       - snowagent-production
     instance_groups:
       - aws-execution
-    execution_environment: Default execution environment
+    execution_environment: EE Windows Kerberos
     ask_limit_on_launch: true
+    ask_variables_on_launch: true
     extra_vars:
       policy_group: production
       ansible_host: !unsafe "{{ inventory_hostname }}.CompanyNet.org"
       ansible_winrm_transport: kerberos
+      ansible_winrm_kinit_mode: manual
     prevent_instance_group_fallback: true
     job_slice_count: 1
     forks: 0
@@ -179,12 +192,14 @@ controller_templates:
       - snowagent-staging
     instance_groups:
       - aws-execution
-    execution_environment: Default execution environment
+    execution_environment: EE Windows Kerberos
     ask_limit_on_launch: true
+    ask_variables_on_launch: true
     extra_vars:
       policy_group: staging
       ansible_host: !unsafe "{{ inventory_hostname }}.CompanyNet.org"
       ansible_winrm_transport: kerberos
+      ansible_winrm_kinit_mode: manual
     prevent_instance_group_fallback: true
     job_slice_count: 1
     forks: 0
@@ -204,12 +219,14 @@ controller_templates:
       - windows-sumologic
     instance_groups:
       - aws-execution
-    execution_environment: Default execution environment
+    execution_environment: EE Windows Kerberos
     ask_limit_on_launch: true
+    ask_variables_on_launch: true
     extra_vars:
       sumologic_environment: production
       ansible_host: !unsafe "{{ inventory_hostname }}.CompanyNet.org"
       ansible_winrm_transport: kerberos
+      ansible_winrm_kinit_mode: manual
     prevent_instance_group_fallback: true
     job_slice_count: 1
     forks: 0
@@ -229,12 +246,14 @@ controller_templates:
       - windows-sumologic
     instance_groups:
       - aws-execution
-    execution_environment: Default execution environment
+    execution_environment: EE Windows Kerberos
     ask_limit_on_launch: true
+    ask_variables_on_launch: true
     extra_vars:
       sumologic_environment: staging
       ansible_host: !unsafe "{{ inventory_hostname }}.CompanyNet.org"
       ansible_winrm_transport: kerberos
+      ansible_winrm_kinit_mode: manual
     prevent_instance_group_fallback: true
     job_slice_count: 1
     forks: 0
