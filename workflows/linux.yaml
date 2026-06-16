@@ -9,13 +9,17 @@ controller_workflows:
     ask_variables_on_launch: true
     destroy_current_nodes: true
     simplified_workflow_nodes:
-      - identifier: Linux-identity-azure
+      - identifier: linux-postbuild-azure
+        unified_job_template: Linux-postbuild-azure
+        always_nodes:
+          - linux-identity-azure
+      - identifier: linux-identity-azure
         unified_job_template: Linux-identity-azure
         success_nodes:
-          - linux-sumologic-azure 
+          - linux-sumologic-azure
           - linux-crowdstrike-azure
-          - linux-snowagent-azure 
-          - linux-datadog-azure 
+          - linux-snowagent-azure
+          - linux-datadog-azure
           - linux-automox-azure
       - identifier: linux-sumologic-azure
         unified_job_template: Linux-sumologic-production-azure
@@ -28,6 +32,46 @@ controller_workflows:
       - identifier: linux-automox-azure
         unified_job_template: Linux-automox-production-azure
 
+  - name: Linux-compliance-azure
+    organization: HTS SRE
+    description: Compliance remediation workflow for Linux systems in Azure
+    inventory: Azure
+    ask_inventory_on_launch: true
+    ask_limit_on_launch: true
+    ask_variables_on_launch: true
+    destroy_current_nodes: true
+    simplified_workflow_nodes:
+      - identifier: linux-datadog-check-azure
+        unified_job_template: Linux-datadog-check-azure
+        failure_nodes:
+          - linux-datadog-azure
+      - identifier: linux-crowdstrike-check-azure
+        unified_job_template: Linux-crowdstrike-check-azure
+        failure_nodes:
+          - linux-crowdstrike-azure
+      - identifier: linux-snowagent-check-azure
+        unified_job_template: Linux-snowagent-check-azure
+        failure_nodes:
+          - linux-snowagent-azure
+      - identifier: linux-sumologic-check-azure
+        unified_job_template: Linux-sumologic-check-azure
+        failure_nodes:
+          - linux-sumologic-azure
+      - identifier: linux-automox-check-azure
+        unified_job_template: Linux-automox-check-azure
+        failure_nodes:
+          - linux-automox-azure
+      - identifier: linux-datadog-azure
+        unified_job_template: Linux-datadog-azure
+      - identifier: linux-crowdstrike-azure
+        unified_job_template: Linux-crowdstrike-azure
+      - identifier: linux-snowagent-azure
+        unified_job_template: Linux-snowagent-production-azure
+      - identifier: linux-sumologic-azure
+        unified_job_template: Linux-sumologic-production-azure
+      - identifier: linux-automox-azure
+        unified_job_template: Linux-automox-production-azure
+
   - name: Linux-bootstrap-aws
     organization: HTS SRE
     description: Bootstrap workflow for Linux systems in AWS
@@ -37,7 +81,11 @@ controller_workflows:
     ask_variables_on_launch: true
     destroy_current_nodes: true
     simplified_workflow_nodes:
-      - identifier: Linux-identity-aws
+      - identifier: linux-postbuild-aws
+        unified_job_template: Linux-postbuild-aws
+        always_nodes:
+          - linux-identity-aws
+      - identifier: linux-identity-aws
         unified_job_template: Linux-identity-aws
         success_nodes:
           - linux-sumologic-aws
@@ -53,5 +101,45 @@ controller_workflows:
         unified_job_template: Linux-snowagent-production-aws
       - identifier: linux-datadog-aws
         unified_job_template: Linux-datadog-aws
+      - identifier: linux-automox-aws
+        unified_job_template: Linux-automox-production-aws
+
+  - name: Linux-compliance-aws
+    organization: HTS SRE
+    description: Compliance remediation workflow for Linux systems in AWS
+    inventory: AWS
+    ask_inventory_on_launch: true
+    ask_limit_on_launch: true
+    ask_variables_on_launch: true
+    destroy_current_nodes: true
+    simplified_workflow_nodes:
+      - identifier: linux-datadog-check-aws
+        unified_job_template: Linux-datadog-check-aws
+        failure_nodes:
+          - linux-datadog-aws
+      - identifier: linux-crowdstrike-check-aws
+        unified_job_template: Linux-crowdstrike-check-aws
+        failure_nodes:
+          - linux-crowdstrike-aws
+      - identifier: linux-snowagent-check-aws
+        unified_job_template: Linux-snowagent-check-aws
+        failure_nodes:
+          - linux-snowagent-aws
+      - identifier: linux-sumologic-check-aws
+        unified_job_template: Linux-sumologic-check-aws
+        failure_nodes:
+          - linux-sumologic-aws
+      - identifier: linux-automox-check-aws
+        unified_job_template: Linux-automox-check-aws
+        failure_nodes:
+          - linux-automox-aws
+      - identifier: linux-datadog-aws
+        unified_job_template: Linux-datadog-aws
+      - identifier: linux-crowdstrike-aws
+        unified_job_template: Linux-crowdstrike-aws
+      - identifier: linux-snowagent-aws
+        unified_job_template: Linux-snowagent-production-aws
+      - identifier: linux-sumologic-aws
+        unified_job_template: Linux-sumologic-production-aws
       - identifier: linux-automox-aws
         unified_job_template: Linux-automox-production-aws
