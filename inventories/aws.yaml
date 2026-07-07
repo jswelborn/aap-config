@@ -7,62 +7,270 @@ controller_inventories:
       managed_by: aap_cac
 
 controller_inventory_sources:
-  - name: AWS
+  - name: hts-aws-com-std-app-ccoe-etg-prod
     organization: HTS SRE
     inventory: AWS
     source: ec2
-    credential: "AWS Inventory"
     execution_environment: "Default execution environment"
     overwrite: true
     overwrite_vars: true
-    update_on_launch: true
+    update_on_launch: false
     verbosity: 1
     source_vars:
-      plugin: amazon.aws.aws_ec2
-      strict_permissions: false
-      strict: false
-      regions:
-        - us-east-1
-        - us-east-2
-        - us-west-1
-        - us-west-2
-      filters:
-        instance-state-name: running
-      hostnames:
-        - tag:Name
-        - private-dns-name
-        - private-ip-address
-      compose:
-        ansible_host: private_ip_address | default(public_ip_address) | default(private_dns_name)
-        private_ip: private_ip_address | default(None)
-        public_ip: public_ip_address | default(None)
-        instance_id: instance_id | default('')
-        instance_type: instance_type | default('')
-        image_id: image_id | default('')
-        platform: platform | default('')
-        platform_details: platform_details | default('')
-        provisioning_state: state.name | default('')
-        resource_type: '''aws_instance'''
-        cloud_provider: '''aws'''
-        os: platform_details | default('')
+      <<: &aws_source_vars
+        plugin: amazon.aws.aws_ec2
+        strict_permissions: false
+        strict: false
+        regions:
+          - us-east-1
+          - us-east-2
+          - us-west-1
+          - us-west-2
+          - ca-central-1
+          - eu-central-1
+          - eu-west-1
+          - eu-west-2
+          - eu-west-3
+          - eu-north-1
+          - ap-northeast-1
+          - ap-northeast-2
+          - ap-northeast-3
+          - ap-south-1
+          - ap-southeast-1
+          - ap-southeast-2
+          - sa-east-1
+        filters:
+          instance-state-name: running
+        hostnames:
+          - tag:Name
+          - private-dns-name
+          - private-ip-address
+        compose:
+          ansible_host: private_ip_address | default(public_ip_address) | default(private_dns_name)
+          private_ip: private_ip_address | default(None)
+          public_ip: public_ip_address | default(None)
+          instance_id: instance_id | default('')
+          instance_type: instance_type | default('')
+          image_id: image_id | default('')
+          platform: platform | default('')
+          platform_details: platform_details | default('')
+          provisioning_state: state.name | default('')
+          resource_type: '"aws_instance"'
+          cloud_provider: '"aws"'
+          os: platform_details | default('')
+        keyed_groups:
+          - prefix: tag
+            key: tags
+          - prefix: region
+            key: placement.region
+          - prefix: availability_zone
+            key: placement.availability_zone
+          - prefix: instance_type
+            key: instance_type
+      iam_role_arn: arn:aws:iam::027856332022:role/hts-ccoe-ansible-readonly
       groups:
         Windows: platform_details is match('Windows')
         Linux: platform_details is not match('Windows')
         AWS: true
-      keyed_groups:
-        - prefix: tag
-          key: tags
-        - prefix: region
-          key: placement.region
-        - prefix: availability_zone
-          key: placement.availability_zone
-        - prefix: instance_type
-          key: instance_type
+        hts_aws_com_std_app_ccoe_etg_prod: true
 
-controller_inventory_sources_update:
-  - name: AWS
+  - name: htv-aws-com-std-app-wideorbit-prod
     organization: HTS SRE
     inventory: AWS
+    source: ec2
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *aws_source_vars
+      iam_role_arn: arn:aws:iam::695686946384:role/hts-ccoe-ansible-readonly
+      groups:
+        Windows: platform_details is match('Windows')
+        Linux: platform_details is not match('Windows')
+        AWS: true
+        htv_aws_com_std_app_wideorbit_prod: true
+
+  - name: hmuk-aws-com-std-app-legacy-prod
+    organization: HTS SRE
+    inventory: AWS
+    source: ec2
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *aws_source_vars
+      iam_role_arn: arn:aws:iam::404725837813:role/hts-ccoe-ansible-readonly
+      groups:
+        Windows: platform_details is match('Windows')
+        Linux: platform_details is not match('Windows')
+        AWS: true
+        hmuk_aws_com_std_app_legacy_prod: true
+
+  - name: hts-aws-com-std-app-myhearst-prod
+    organization: HTS SRE
+    inventory: AWS
+    source: ec2
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *aws_source_vars
+      iam_role_arn: arn:aws:iam::105971765127:role/hts-ccoe-ansible-readonly
+      groups:
+        Windows: platform_details is match('Windows')
+        Linux: platform_details is not match('Windows')
+        AWS: true
+        hts_aws_com_std_app_myhearst_prod: true
+
+  - name: hnpit-aws-com-std-app-newspaper-prod
+    organization: HTS SRE
+    inventory: AWS
+    source: ec2
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *aws_source_vars
+      iam_role_arn: arn:aws:iam::262235211544:role/hts-ccoe-ansible-readonly
+      groups:
+        Windows: platform_details is match('Windows')
+        Linux: platform_details is not match('Windows')
+        AWS: true
+        hnpit_aws_com_std_app_newspaper_prod: true
+
+  - name: hnpit-aws-com-std-app-chronicle-prod
+    organization: HTS SRE
+    inventory: AWS
+    source: ec2
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *aws_source_vars
+      iam_role_arn: arn:aws:iam::234211532367:role/hts-ccoe-ansible-readonly
+      groups:
+        Windows: platform_details is match('Windows')
+        Linux: platform_details is not match('Windows')
+        AWS: true
+        hnpit_aws_com_std_app_chronicle_prod: true
+
+  - name: hts-aws-com-std-app-hsc-dcc-prod
+    organization: HTS SRE
+    inventory: AWS
+    source: ec2
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *aws_source_vars
+      iam_role_arn: arn:aws:iam::810452922204:role/hts-ccoe-ansible-readonly
+      groups:
+        Windows: platform_details is match('Windows')
+        Linux: platform_details is not match('Windows')
+        AWS: true
+        hts_aws_com_std_app_hsc_dcc_prod: true
+
+  - name: hts-aws-com-std-app-hcmops-prod
+    organization: HTS SRE
+    inventory: AWS
+    source: ec2
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *aws_source_vars
+      iam_role_arn: arn:aws:iam::381492300702:role/hts-ccoe-ansible-readonly
+      groups:
+        Windows: platform_details is match('Windows')
+        Linux: platform_details is not match('Windows')
+        AWS: true
+        hts_aws_com_std_app_hcmops_prod: true
+
+  - name: htv-aws-com-std-app-dcc-prod
+    organization: HTS SRE
+    inventory: AWS
+    source: ec2
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *aws_source_vars
+      iam_role_arn: arn:aws:iam::144249361702:role/hts-ccoe-ansible-readonly
+      groups:
+        Windows: platform_details is match('Windows')
+        Linux: platform_details is not match('Windows')
+        AWS: true
+        htv_aws_com_std_app_dcc_prod: true
+
+  - name: hts-aws-com-std-app-security-tooling-prod
+    organization: HTS SRE
+    inventory: AWS
+    source: ec2
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *aws_source_vars
+      iam_role_arn: arn:aws:iam::987085738359:role/hts-ccoe-ansible-readonly
+      groups:
+        Windows: platform_details is match('Windows')
+        Linux: platform_details is not match('Windows')
+        AWS: true
+        hts_aws_com_std_app_security_tooling_prod: true
+
+  - name: hts-aws-com-std-app-prodtest-prod
+    organization: HTS SRE
+    inventory: AWS
+    source: ec2
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *aws_source_vars
+      iam_role_arn: arn:aws:iam::654654221239:role/hts-ccoe-ansible-readonly
+      groups:
+        Windows: platform_details is match('Windows')
+        Linux: platform_details is not match('Windows')
+        AWS: true
+        hts_aws_com_std_app_prodtest_prod: true
+
+  - name: hmusdigital-aws-com-std-app-hmd-us-prod
+    organization: HTS SRE
+    inventory: AWS
+    source: ec2
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *aws_source_vars
+      iam_role_arn: arn:aws:iam::123824158984:role/hts-ccoe-ansible-readonly
+      groups:
+        Windows: platform_details is match('Windows')
+        Linux: platform_details is not match('Windows')
+        AWS: true
+        hmusdigital_aws_com_std_app_hmd_us_prod: true
 
 controller_groups:
   - name: AWS_Windows_Bootstrap_Config
