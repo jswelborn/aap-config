@@ -7,18 +7,19 @@ controller_inventories:
       managed_by: aap_cac
   
 controller_inventory_sources:
-  - name: Azure
+  - name: HBM_FDB_PROD
     organization: HTS SRE
     inventory: Azure
     source: azure_rm
-    credential: "Azure Inventory"
+    credential: "Azure Inventory - HBM_FDB_PROD"
     execution_environment: "Default execution environment"
     overwrite: true
     overwrite_vars: true
-    update_on_launch: true
+    update_on_launch: false
     verbosity: 1
-    source_vars:
+    source_vars: &azure_source_vars
       plugin: azure_rm
+      aap_subscription_id: "03406327-efac-48f9-86da-67618104eec3"
       include_vm_resource_groups:
         - "*"
       auth_source: env
@@ -37,14 +38,623 @@ controller_inventory_sources:
         Windows: image.offer | default('') is match('WindowsServer')
         Linux: image.offer | default('') is not match('WindowsServer')
         Azure: true
+        HBM_FDB_PROD: true
       keyed_groups:
         - prefix: tag
           key: tags
         - prefix: location
-          key: location     
+          key: location
+
+  - name: hearsthealth-sub
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - hearsthealth-sub"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "019b7412-1ce5-445f-8ce6-398b2b8d3f8e"
+      conditional_groups:
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
+        Azure: true
+        hearsthealth_sub: true
+
+  - name: HearstTechnologyServices-SecurityOperations-Prod
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - HearstTechnologyServices-SecurityOperations-Prod"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "21e6e00d-727f-4e72-9e57-4ebfa7c28a0a"
+      conditional_groups:
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
+        Azure: true
+        HearstTechnologyServices_SecurityOperations_Prod: true
+
+  - name: HEARSTTRANSPORTATION-MOTOR-SUB
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - HEARSTTRANSPORTATION-MOTOR-SUB"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "0ba49703-afb6-4042-a173-70f9f6b2bce5"
+      conditional_groups:
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
+        Azure: true
+        HEARSTTRANSPORTATION_MOTOR_SUB: true
+
+  - name: HEARST-WESTERN-PROPERTIES-SUB
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - HEARST-WESTERN-PROPERTIES-SUB"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "d376632f-113d-4b40-9b5a-195380b73861"
+      conditional_groups:
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
+        Azure: true
+        HEARST_WESTERN_PROPERTIES_SUB: true
+
+  - name: HES-KINGFEATURES-SUB
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - HES-KINGFEATURES-SUB"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "26dd0fa8-a453-4e58-8a48-c1bc3a155d60"
+      conditional_groups:
+        Windows: image.offer | default('') is match('windowsserver')
+        Linux: image.offer | default('') is not match('windowsserver')
+        Azure: true
+        HES_KINGFEATURES_SUB: true
+
+  - name: HES-SUB
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - HES-SUB"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "40ef0cf0-309f-4fa3-a2b7-c10cffbc069a"
+      conditional_groups:
+        Windows: image.offer | default('') is match('windowsserver')
+        Linux: image.offer | default('') is not match('windowsserver')
+        Azure: true
+        HES_SUB: true
+
+  - name: HHO-HOMEOFFICE-SUB
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - HHO-HOMEOFFICE-SUB"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "3cc1e62d-1d70-45a0-bab2-b2fcb2a8ab4a"
+      conditional_groups:
+        Windows: image.offer | default('') is match('windowsserver')
+        Linux: image.offer | default('') is not match('windowsserver')
+        Azure: true
+        HHO_HOMEOFFICE_SUB: true
+
+  - name: HMD-HEARSTAUTOS-PROD-SUB
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - HMD-HEARSTAUTOS-PROD-SUB"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "7752d754-19ed-4a56-97b6-46c769e346a8"
+      conditional_groups:
+        Windows: image.offer | default('') is match('windowsserver')
+        Linux: image.offer | default('') is not match('windowsserver')
+        Azure: true
+        HMD_HEARSTAUTOS_PROD_SUB: true
+
+  - name: HMD-HMI-PROD
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - HMD-HMI-PROD"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "c2285550-caff-461a-969c-f4aeeafab9e2"
+      conditional_groups:
+        Windows: image.offer | default('') is match('windowsserver')
+        Linux: image.offer | default('') is not match('windowsserver')
+        Azure: true
+        HMD_HMI_PROD: true
+
+  - name: HMD-HMIUK-SUB
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - HMD-HMIUK-SUB"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "6989d3cd-87bb-4836-a687-83029907c34a"
+      conditional_groups:
+        Windows: image.offer | default('') is match('windowsserver')
+        Linux: image.offer | default('') is not match('windowsserver')
+        Azure: true
+        HMD_HMIUK_SUB: true
+
+  - name: HMD-MAGAZINES-PROD
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - HMD-MAGAZINES-PROD"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "6d22a744-4ece-4b1a-b82b-3d9f172739d5"
+      conditional_groups:
+        Windows: image.offer | default('') is match('windowsserver')
+        Linux: image.offer | default('') is not match('windowsserver')
+        Azure: true
+        HMD_MAGAZINES_PROD: true
+
+  - name: HNP-HC-PROD
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - HNP-HC-PROD"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "7955d782-ef0c-4438-b682-c3756b39afcd"
+      conditional_groups:
+        Windows: image.offer | default('') is match('windowsserver')
+        Linux: image.offer | default('') is not match('windowsserver')
+        Azure: true
+        HNP_HC_PROD: true
+
+  - name: HNP-LOCALEDGE-PROD
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - HNP-LOCALEDGE-PROD"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "9fa99041-043a-406d-8362-25a8b4c17812"
+      conditional_groups:
+        Windows: image.offer | default('') is match('windowsserver')
+        Linux: image.offer | default('') is not match('windowsserver')
+        Azure: true
+        HNP_LOCALEDGE_PROD: true
+
+  - name: HNP-MIDLAND-SUB
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - HNP-MIDLAND-SUB"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "27ad875b-a5d4-44ae-b0bb-57a7475dfcd6"
+      conditional_groups:
+        Windows: image.offer | default('') is match('windowsserver')
+        Linux: image.offer | default('') is not match('windowsserver')
+        Azure: true
+        HNP_MIDLAND_SUB: true
+
+  - name: HNP-NHR-SUB
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - HNP-NHR-SUB"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "70a3e88a-9d2f-4f5d-a425-8b80385fa6d9"
+      conditional_groups:
+        Windows: image.offer | default('') is match('windowsserver')
+        Linux: image.offer | default('') is not match('windowsserver')
+        Azure: true
+        HNP_NHR_SUB: true
+
+  - name: hnp-saen-sub
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - hnp-saen-sub"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "1ee908fa-52d5-4f83-aa7b-82d22a856fe8"
+      conditional_groups:
+        Windows: image.offer | default('') is match('windowsserver')
+        Linux: image.offer | default('') is not match('windowsserver')
+        Azure: true
+        hnp_saen_sub: true
+
+  - name: HNP_SFC_PROD
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - HNP_SFC_PROD"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "615894eb-bb00-4387-aaeb-38965b46833a"
+      conditional_groups:
+        Windows: image.offer | default('') is match('windowsserver')
+        Linux: image.offer | default('') is not match('windowsserver')
+        Azure: true
+        HNP_SFC_PROD: true
+
+  - name: HST_HSC_PROD
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - HST_HSC_PROD"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "fefc5884-2a57-4ba7-b87d-93af8c7c1705"
+      conditional_groups:
+        Windows: image.offer | default('') is match('windowsserver')
+        Linux: image.offer | default('') is not match('windowsserver')
+        Azure: true
+        HST_HSC_PROD: true
+
+  - name: HT-HTS-DESKTOPENG-SUB
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - HT-HTS-DESKTOPENG-SUB"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "e7b7fedf-8a8f-4b0c-913b-a08ccd060d9a"
+      conditional_groups:
+        Windows: image.offer | default('') is match('windowsserver')
+        Linux: image.offer | default('') is not match('windowsserver')
+        Azure: true
+        HT_HTS_DESKTOPENG_SUB: true
+
+  - name: HT-HTS-SUB
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - HT-HTS-SUB"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "6133c7a0-a417-43b9-acb9-1bdd65114bbe"
+      conditional_groups:
+        Windows: image.offer | default('') is match('windowsserver')
+        Linux: image.offer | default('') is not match('windowsserver')
+        Azure: true
+        HT_HTS_SUB: true
+
+  - name: HT-HTS-UIPATHRPA
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - HT-HTS-UIPATHRPA"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "c978d859-d059-46a2-a2e2-a66fc751e68b"
+      conditional_groups:
+        Windows: image.offer | default('') is match('windowsserver')
+        Linux: image.offer | default('') is not match('windowsserver')
+        Azure: true
+        HT_HTS_UIPATHRPA: true
+
+  - name: HT_OPS_NONPROD
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - HT_OPS_NONPROD"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "563575e7-d5b3-4528-8f64-18a2e7601a11"
+      conditional_groups:
+        Windows: image.offer | default('') is match('windowsserver')
+        Linux: image.offer | default('') is not match('windowsserver')
+        Azure: true
+        HT_OPS_NONPROD: true
+
+  - name: HT_OPS_SHARED
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - HT_OPS_SHARED"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "fbcbff4c-4854-4e2e-9c79-82afa48fed17"
+      conditional_groups:
+        Windows: image.offer | default('') is match('windowsserver')
+        Linux: image.offer | default('') is not match('windowsserver')
+        Azure: true
+        HT_OPS_SHARED: true
+
+  - name: HT_PROD
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - HT_PROD"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "6aecd657-b37f-4339-9d31-319d4b156e1c"
+      conditional_groups:
+        Windows: image.offer | default('') is match('windowsserver')
+        Linux: image.offer | default('') is not match('windowsserver')
+        Azure: true
+        HT_PROD: true
+
+  - name: hts-azure-com-std-servicenow-prod
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - hts-azure-com-std-servicenow-prod"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "cf74f2ba-8796-4a45-a92d-c94703d55574"
+      conditional_groups:
+        Windows: image.offer | default('') is match('windowsserver')
+        Linux: image.offer | default('') is not match('windowsserver')
+        Azure: true
+        hts_azure_com_std_servicenow_prod: true
+
+  - name: HTV-DECENTRIX
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - HTV-DECENTRIX"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "7bdf368f-9297-4182-b26a-51b5742ae733"
+      conditional_groups:
+        Windows: image.offer | default('') is match('windowsserver')
+        Linux: image.offer | default('') is not match('windowsserver')
+        Azure: true
+        HTV_DECENTRIX: true
+
+  - name: HTV-HTV-SUB
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - HTV-HTV-SUB"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "7363fb3c-46e6-44f2-8b9c-de24859bee96"
+      conditional_groups:
+        Windows: image.offer | default('') is match('windowsserver')
+        Linux: image.offer | default('') is not match('windowsserver')
+        Azure: true
+        HTV_HTV_SUB: true
+
+  - name: lmt-azr-std-app-various-prod
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - lmt-azr-std-app-various-prod"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "fb487ced-c87d-483c-8087-032c3f88704a"
+      conditional_groups:
+        Windows: image.offer | default('') is match('windowsserver')
+        Linux: image.offer | default('') is not match('windowsserver')
+        Azure: true
+        lmt_azr_std_app_various_prod: true
+
+  - name: MCG_CORP
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - MCG_CORP"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "8a800c28-e6eb-4a14-b5b6-4b1e2fa5b141"
+      conditional_groups:
+        Windows: image.offer | default('') is match('windowsserver')
+        Linux: image.offer | default('') is not match('windowsserver')
+        Azure: true
+        MCG_CORP: true
+
+  - name: MCG_CORP_STAGE
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - MCG_CORP_STAGE"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "7d6cb9e9-8a00-4b0c-8bc0-30ebe43d96e5"
+      conditional_groups:
+        Windows: image.offer | default('') is match('windowsserver')
+        Linux: image.offer | default('') is not match('windowsserver')
+        Azure: true
+        MCG_CORP_STAGE: true
+
+  - name: SHARED_REGION_CENTRAL_US
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - SHARED_REGION_CENTRAL_US"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "3bf42932-fd9b-4f4a-b2a5-a2b9d328b5db"
+      conditional_groups:
+        Windows: image.offer | default('') is match('windowsserver')
+        Linux: image.offer | default('') is not match('windowsserver')
+        Azure: true
+        SHARED_REGION_CENTRAL_US: true
+
+  - name: SHARED_REGION_EAST_US
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - SHARED_REGION_EAST_US"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "bf205391-b2f8-4991-8193-4d18d9f21b8a"
+      conditional_groups:
+        Windows: image.offer | default('') is match('windowsserver')
+        Linux: image.offer | default('') is not match('windowsserver')
+        Azure: true
+        SHARED_REGION_EAST_US: true
 
 controller_inventory_sources_update:
-  - name: Azure
+  - name: HBM_FDB_PROD
     organization: HTS SRE
     inventory: Azure
 
