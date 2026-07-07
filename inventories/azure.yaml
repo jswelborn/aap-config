@@ -17,33 +17,34 @@ controller_inventory_sources:
     overwrite_vars: true
     update_on_launch: false
     verbosity: 1
-    source_vars: &azure_source_vars
-      plugin: azure_rm
+    source_vars: 
+      <<: &azure_source_vars
+        plugin: azure_rm
+        include_vm_resource_groups:
+          - "*"
+        auth_source: env
+        plain_host_names: true
+        hostnames:
+          - name
+        compose:
+          ansible_host: >-
+            private_ipv4_addresses[0] | default(public_ipv4_addresses[0] | default(name))
+          private_ip: private_ipv4_addresses[0] | default(None)
+          os_offer: image.offer | default('')
+          os_sku: image.sku | default('')
+          provisioning_state: provisioning_state | default('')
+          resource_type: resource_type | default('')
+        keyed_groups:
+          - prefix: tag
+            key: tags
+          - prefix: location
+            key: location
       aap_subscription_id: "03406327-efac-48f9-86da-67618104eec3"
-      include_vm_resource_groups:
-        - "*"
-      auth_source: env
-      plain_host_names: true
-      hostnames:
-        - name
-      compose:
-        ansible_host: >-
-          private_ipv4_addresses[0] | default(public_ipv4_addresses[0] | default(name))
-        private_ip: private_ipv4_addresses[0] | default(None)
-        os_offer: image.offer | default('')
-        os_sku: image.sku | default('')
-        provisioning_state: provisioning_state | default('')
-        resource_type: resource_type | default('')
       conditional_groups:
         Windows: image.offer | default('') is match('WindowsServer')
         Linux: image.offer | default('') is not match('WindowsServer')
         Azure: true
         HBM_FDB_PROD: true
-      keyed_groups:
-        - prefix: tag
-          key: tags
-        - prefix: location
-          key: location
 
   - name: hearsthealth-sub
     organization: HTS SRE
@@ -135,8 +136,8 @@ controller_inventory_sources:
       <<: *azure_source_vars
       aap_subscription_id: "26dd0fa8-a453-4e58-8a48-c1bc3a155d60"
       conditional_groups:
-        Windows: image.offer | default('') is match('windowsserver')
-        Linux: image.offer | default('') is not match('windowsserver')
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
         Azure: true
         HES_KINGFEATURES_SUB: true
 
@@ -154,8 +155,8 @@ controller_inventory_sources:
       <<: *azure_source_vars
       aap_subscription_id: "40ef0cf0-309f-4fa3-a2b7-c10cffbc069a"
       conditional_groups:
-        Windows: image.offer | default('') is match('windowsserver')
-        Linux: image.offer | default('') is not match('windowsserver')
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
         Azure: true
         HES_SUB: true
 
@@ -173,8 +174,8 @@ controller_inventory_sources:
       <<: *azure_source_vars
       aap_subscription_id: "3cc1e62d-1d70-45a0-bab2-b2fcb2a8ab4a"
       conditional_groups:
-        Windows: image.offer | default('') is match('windowsserver')
-        Linux: image.offer | default('') is not match('windowsserver')
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
         Azure: true
         HHO_HOMEOFFICE_SUB: true
 
@@ -192,8 +193,8 @@ controller_inventory_sources:
       <<: *azure_source_vars
       aap_subscription_id: "7752d754-19ed-4a56-97b6-46c769e346a8"
       conditional_groups:
-        Windows: image.offer | default('') is match('windowsserver')
-        Linux: image.offer | default('') is not match('windowsserver')
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
         Azure: true
         HMD_HEARSTAUTOS_PROD_SUB: true
 
@@ -211,8 +212,8 @@ controller_inventory_sources:
       <<: *azure_source_vars
       aap_subscription_id: "c2285550-caff-461a-969c-f4aeeafab9e2"
       conditional_groups:
-        Windows: image.offer | default('') is match('windowsserver')
-        Linux: image.offer | default('') is not match('windowsserver')
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
         Azure: true
         HMD_HMI_PROD: true
 
@@ -230,8 +231,8 @@ controller_inventory_sources:
       <<: *azure_source_vars
       aap_subscription_id: "6989d3cd-87bb-4836-a687-83029907c34a"
       conditional_groups:
-        Windows: image.offer | default('') is match('windowsserver')
-        Linux: image.offer | default('') is not match('windowsserver')
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
         Azure: true
         HMD_HMIUK_SUB: true
 
@@ -249,8 +250,8 @@ controller_inventory_sources:
       <<: *azure_source_vars
       aap_subscription_id: "6d22a744-4ece-4b1a-b82b-3d9f172739d5"
       conditional_groups:
-        Windows: image.offer | default('') is match('windowsserver')
-        Linux: image.offer | default('') is not match('windowsserver')
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
         Azure: true
         HMD_MAGAZINES_PROD: true
 
@@ -268,8 +269,8 @@ controller_inventory_sources:
       <<: *azure_source_vars
       aap_subscription_id: "7955d782-ef0c-4438-b682-c3756b39afcd"
       conditional_groups:
-        Windows: image.offer | default('') is match('windowsserver')
-        Linux: image.offer | default('') is not match('windowsserver')
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
         Azure: true
         HNP_HC_PROD: true
 
@@ -287,8 +288,8 @@ controller_inventory_sources:
       <<: *azure_source_vars
       aap_subscription_id: "9fa99041-043a-406d-8362-25a8b4c17812"
       conditional_groups:
-        Windows: image.offer | default('') is match('windowsserver')
-        Linux: image.offer | default('') is not match('windowsserver')
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
         Azure: true
         HNP_LOCALEDGE_PROD: true
 
@@ -306,8 +307,8 @@ controller_inventory_sources:
       <<: *azure_source_vars
       aap_subscription_id: "27ad875b-a5d4-44ae-b0bb-57a7475dfcd6"
       conditional_groups:
-        Windows: image.offer | default('') is match('windowsserver')
-        Linux: image.offer | default('') is not match('windowsserver')
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
         Azure: true
         HNP_MIDLAND_SUB: true
 
@@ -325,8 +326,8 @@ controller_inventory_sources:
       <<: *azure_source_vars
       aap_subscription_id: "70a3e88a-9d2f-4f5d-a425-8b80385fa6d9"
       conditional_groups:
-        Windows: image.offer | default('') is match('windowsserver')
-        Linux: image.offer | default('') is not match('windowsserver')
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
         Azure: true
         HNP_NHR_SUB: true
 
@@ -344,8 +345,8 @@ controller_inventory_sources:
       <<: *azure_source_vars
       aap_subscription_id: "1ee908fa-52d5-4f83-aa7b-82d22a856fe8"
       conditional_groups:
-        Windows: image.offer | default('') is match('windowsserver')
-        Linux: image.offer | default('') is not match('windowsserver')
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
         Azure: true
         hnp_saen_sub: true
 
@@ -363,8 +364,8 @@ controller_inventory_sources:
       <<: *azure_source_vars
       aap_subscription_id: "615894eb-bb00-4387-aaeb-38965b46833a"
       conditional_groups:
-        Windows: image.offer | default('') is match('windowsserver')
-        Linux: image.offer | default('') is not match('windowsserver')
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
         Azure: true
         HNP_SFC_PROD: true
 
@@ -382,8 +383,8 @@ controller_inventory_sources:
       <<: *azure_source_vars
       aap_subscription_id: "fefc5884-2a57-4ba7-b87d-93af8c7c1705"
       conditional_groups:
-        Windows: image.offer | default('') is match('windowsserver')
-        Linux: image.offer | default('') is not match('windowsserver')
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
         Azure: true
         HST_HSC_PROD: true
 
@@ -401,8 +402,8 @@ controller_inventory_sources:
       <<: *azure_source_vars
       aap_subscription_id: "e7b7fedf-8a8f-4b0c-913b-a08ccd060d9a"
       conditional_groups:
-        Windows: image.offer | default('') is match('windowsserver')
-        Linux: image.offer | default('') is not match('windowsserver')
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
         Azure: true
         HT_HTS_DESKTOPENG_SUB: true
 
@@ -420,8 +421,8 @@ controller_inventory_sources:
       <<: *azure_source_vars
       aap_subscription_id: "6133c7a0-a417-43b9-acb9-1bdd65114bbe"
       conditional_groups:
-        Windows: image.offer | default('') is match('windowsserver')
-        Linux: image.offer | default('') is not match('windowsserver')
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
         Azure: true
         HT_HTS_SUB: true
 
@@ -439,8 +440,8 @@ controller_inventory_sources:
       <<: *azure_source_vars
       aap_subscription_id: "c978d859-d059-46a2-a2e2-a66fc751e68b"
       conditional_groups:
-        Windows: image.offer | default('') is match('windowsserver')
-        Linux: image.offer | default('') is not match('windowsserver')
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
         Azure: true
         HT_HTS_UIPATHRPA: true
 
@@ -458,8 +459,8 @@ controller_inventory_sources:
       <<: *azure_source_vars
       aap_subscription_id: "563575e7-d5b3-4528-8f64-18a2e7601a11"
       conditional_groups:
-        Windows: image.offer | default('') is match('windowsserver')
-        Linux: image.offer | default('') is not match('windowsserver')
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
         Azure: true
         HT_OPS_NONPROD: true
 
@@ -477,8 +478,8 @@ controller_inventory_sources:
       <<: *azure_source_vars
       aap_subscription_id: "fbcbff4c-4854-4e2e-9c79-82afa48fed17"
       conditional_groups:
-        Windows: image.offer | default('') is match('windowsserver')
-        Linux: image.offer | default('') is not match('windowsserver')
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
         Azure: true
         HT_OPS_SHARED: true
 
@@ -496,8 +497,8 @@ controller_inventory_sources:
       <<: *azure_source_vars
       aap_subscription_id: "6aecd657-b37f-4339-9d31-319d4b156e1c"
       conditional_groups:
-        Windows: image.offer | default('') is match('windowsserver')
-        Linux: image.offer | default('') is not match('windowsserver')
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
         Azure: true
         HT_PROD: true
 
@@ -515,8 +516,8 @@ controller_inventory_sources:
       <<: *azure_source_vars
       aap_subscription_id: "cf74f2ba-8796-4a45-a92d-c94703d55574"
       conditional_groups:
-        Windows: image.offer | default('') is match('windowsserver')
-        Linux: image.offer | default('') is not match('windowsserver')
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
         Azure: true
         hts_azure_com_std_servicenow_prod: true
 
@@ -534,8 +535,8 @@ controller_inventory_sources:
       <<: *azure_source_vars
       aap_subscription_id: "7bdf368f-9297-4182-b26a-51b5742ae733"
       conditional_groups:
-        Windows: image.offer | default('') is match('windowsserver')
-        Linux: image.offer | default('') is not match('windowsserver')
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
         Azure: true
         HTV_DECENTRIX: true
 
@@ -553,8 +554,8 @@ controller_inventory_sources:
       <<: *azure_source_vars
       aap_subscription_id: "7363fb3c-46e6-44f2-8b9c-de24859bee96"
       conditional_groups:
-        Windows: image.offer | default('') is match('windowsserver')
-        Linux: image.offer | default('') is not match('windowsserver')
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
         Azure: true
         HTV_HTV_SUB: true
 
@@ -572,8 +573,8 @@ controller_inventory_sources:
       <<: *azure_source_vars
       aap_subscription_id: "fb487ced-c87d-483c-8087-032c3f88704a"
       conditional_groups:
-        Windows: image.offer | default('') is match('windowsserver')
-        Linux: image.offer | default('') is not match('windowsserver')
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
         Azure: true
         lmt_azr_std_app_various_prod: true
 
@@ -591,8 +592,8 @@ controller_inventory_sources:
       <<: *azure_source_vars
       aap_subscription_id: "8a800c28-e6eb-4a14-b5b6-4b1e2fa5b141"
       conditional_groups:
-        Windows: image.offer | default('') is match('windowsserver')
-        Linux: image.offer | default('') is not match('windowsserver')
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
         Azure: true
         MCG_CORP: true
 
@@ -610,8 +611,8 @@ controller_inventory_sources:
       <<: *azure_source_vars
       aap_subscription_id: "7d6cb9e9-8a00-4b0c-8bc0-30ebe43d96e5"
       conditional_groups:
-        Windows: image.offer | default('') is match('windowsserver')
-        Linux: image.offer | default('') is not match('windowsserver')
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
         Azure: true
         MCG_CORP_STAGE: true
 
@@ -629,8 +630,8 @@ controller_inventory_sources:
       <<: *azure_source_vars
       aap_subscription_id: "3bf42932-fd9b-4f4a-b2a5-a2b9d328b5db"
       conditional_groups:
-        Windows: image.offer | default('') is match('windowsserver')
-        Linux: image.offer | default('') is not match('windowsserver')
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
         Azure: true
         SHARED_REGION_CENTRAL_US: true
 
@@ -648,10 +649,124 @@ controller_inventory_sources:
       <<: *azure_source_vars
       aap_subscription_id: "bf205391-b2f8-4991-8193-4d18d9f21b8a"
       conditional_groups:
-        Windows: image.offer | default('') is match('windowsserver')
-        Linux: image.offer | default('') is not match('windowsserver')
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
         Azure: true
         SHARED_REGION_EAST_US: true
+
+  - name: SHARED_REGION_EAST_US2
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - SHARED_REGION_EAST_US2"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "8b63d73e-fed6-4d72-a975-76217ff6e03a"
+      conditional_groups:
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
+        Azure: true
+        SHARED_REGION_EAST_US2: true
+
+  - name: SHARED_REGION_SOUTH_UK
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - SHARED_REGION_SOUTH_UK"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "e8a08086-143d-4fbd-8dc9-00cd9183d871"
+      conditional_groups:
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
+        Azure: true
+        SHARED_REGION_SOUTH_UK: true
+
+  - name: SHARED_REGION_WEST_EUROPE
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - SHARED_REGION_WEST_EUROPE"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "80513663-dcd0-4237-a1ea-42cee790f7dc"
+      conditional_groups:
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
+        Azure: true
+        SHARED_REGION_WEST_EUROPE: true
+
+  - name: SHARED_REGION_WEST_UK
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - SHARED_REGION_WEST_UK"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "77f2a46f-3e96-4383-9aac-a20138b5ba70"
+      conditional_groups:
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
+        Azure: true
+        SHARED_REGION_WEST_UK: true
+
+  - name: SHARED_REGION_WEST_US
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - SHARED_REGION_WEST_US"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "a13e60d8-3862-4824-b2b1-93e852291378"
+      conditional_groups:
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
+        Azure: true
+        SHARED_REGION_WEST_US: true
+
+  - name: SHARED_REGION_WEST_US2
+    organization: HTS SRE
+    inventory: Azure
+    source: azure_rm
+    credential: "Azure Inventory - SHARED_REGION_WEST_US2"
+    execution_environment: "Default execution environment"
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: false
+    verbosity: 1
+    source_vars:
+      <<: *azure_source_vars
+      aap_subscription_id: "18024309-619b-4a67-bcfe-d383233092ab"
+      conditional_groups:
+        Windows: image.offer | default('') is match('WindowsServer')
+        Linux: image.offer | default('') is not match('WindowsServer')
+        Azure: true
+        SHARED_REGION_WEST_US2: true
 
 controller_inventory_sources_update:
   - name: HBM_FDB_PROD
