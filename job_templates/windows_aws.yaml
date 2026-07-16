@@ -285,3 +285,144 @@ controller_templates:
     verbosity: 0
     timeout: 0
     state: present
+
+  - name: Windows-datadog-check-aws
+    organization: HTS SRE
+    description: AAP job template for Windows Datadog Agent compliance check in AWS
+    job_type: run
+    inventory: AWS
+    project: Windows-datadog
+    playbook: windows_datadog_check.yaml
+    credentials:
+      - hetwinadmin_updated
+    instance_groups:
+      - aws-execution
+    execution_environment: Default execution environment
+    ask_limit_on_launch: true
+    ask_variables_on_launch: true
+    extra_vars:
+      ansible_winrm_transport: ntlm
+      ansible_winrm_server_cert_validation: ignore
+    prevent_instance_group_fallback: true
+    job_slice_count: 1
+    forks: 0
+    verbosity: 0
+    timeout: 0
+    state: present
+
+  - name: Windows-crowdstrike-check-aws
+    organization: HTS SRE
+    description: AAP job template for Windows CrowdStrike Falcon compliance check in AWS
+    job_type: run
+    inventory: AWS
+    project: Windows-crowdstrike
+    playbook: windows_crowdstrike_check.yaml
+    credentials:
+      - hetwinadmin_updated
+    instance_groups:
+      - aws-execution
+    execution_environment: Default execution environment
+    ask_limit_on_launch: true
+    ask_variables_on_launch: true
+    extra_vars:
+      ansible_winrm_transport: ntlm
+      ansible_winrm_server_cert_validation: ignore
+    prevent_instance_group_fallback: true
+    job_slice_count: 1
+    forks: 0
+    verbosity: 0
+    timeout: 0
+    state: present
+
+  - name: Windows-snowagent-check-aws
+    organization: HTS SRE
+    description: AAP job template for Windows ServiceNow ACC compliance check in AWS
+    job_type: run
+    inventory: AWS
+    project: Windows-snowagent
+    playbook: windows_snowagent_check.yaml
+    credentials:
+      - hetwinadmin_updated
+    instance_groups:
+      - aws-execution
+    execution_environment: Default execution environment
+    ask_limit_on_launch: true
+    ask_variables_on_launch: true
+    extra_vars:
+      ansible_winrm_transport: ntlm
+      ansible_winrm_server_cert_validation: ignore
+    prevent_instance_group_fallback: true
+    job_slice_count: 1
+    forks: 0
+    verbosity: 0
+    timeout: 0
+    state: present
+
+  - name: Windows-sumologic-check-aws
+    organization: HTS SRE
+    description: AAP job template for Windows SumoLogic Collector compliance check in AWS
+    job_type: run
+    inventory: AWS
+    project: Windows-sumologic
+    playbook: windows_sumologic_check.yaml
+    credentials:
+      - hetwinadmin_updated
+    instance_groups:
+      - aws-execution
+    execution_environment: Default execution environment
+    ask_limit_on_launch: true
+    ask_variables_on_launch: true
+    extra_vars:
+      ansible_winrm_transport: ntlm
+      ansible_winrm_server_cert_validation: ignore
+    prevent_instance_group_fallback: true
+    job_slice_count: 1
+    forks: 0
+    verbosity: 0
+    timeout: 0
+    state: present
+
+  - name: Windows-automox-check-aws
+    organization: HTS SRE
+    description: AAP job template for Windows Automox Agent compliance check in AWS
+    job_type: run
+    inventory: AWS
+    project: Windows-automox
+    playbook: windows_automox_check.yaml
+    credentials:
+      - hetwinadmin_updated
+    instance_groups:
+      - aws-execution
+    execution_environment: Default execution environment
+    ask_limit_on_launch: true
+    ask_variables_on_launch: true
+    extra_vars:
+      ansible_winrm_transport: ntlm
+      ansible_winrm_server_cert_validation: ignore
+    prevent_instance_group_fallback: true
+    job_slice_count: 1
+    forks: 0
+    verbosity: 0
+    timeout: 0
+    state: present
+
+  - name: Windows-identity-onboard-aws
+    organization: HTS SRE
+    description: AAP job template to onboard existing Windows servers by granting the Windows Automation service account local administrator access
+    job_type: run
+    inventory: AWS
+    project: Windows-identity
+    playbook: windows_identity_onboard.yaml
+    credentials:
+      - hetwinadmin_updated
+    instance_groups:
+      - aws-execution
+    execution_environment: Default execution environment
+    ask_limit_on_launch: true
+    ask_variables_on_launch: true
+    prevent_instance_group_fallback: true
+    job_slice_count: 1
+    forks: 0
+    verbosity: 0
+    timeout: 0
+    state: present
