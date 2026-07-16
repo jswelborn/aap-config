@@ -69,3 +69,52 @@ controller_workflows:
           - Windows-snowagent-aws
       - identifier: Windows-snowagent-aws
         unified_job_template: Windows-snowagent-production-aws
+
+  - name: Windows-compliance-aws
+    organization: HTS SRE
+    description: Compliance remediation workflow for Windows systems in AWS
+    inventory: AWS
+    ask_inventory_on_launch: true
+    ask_limit_on_launch: true
+    ask_variables_on_launch: true
+    destroy_current_nodes: true
+    simplified_workflow_nodes:
+      - identifier: windows-datadog-check-aws
+        unified_job_template: Windows-datadog-check-aws
+        failure_nodes:
+          - windows-datadog-aws
+
+      - identifier: windows-crowdstrike-check-aws
+        unified_job_template: Windows-crowdstrike-check-aws
+        failure_nodes:
+          - windows-crowdstrike-aws
+
+      - identifier: windows-snowagent-check-aws
+        unified_job_template: Windows-snowagent-check-aws
+        failure_nodes:
+          - windows-snowagent-aws
+
+      - identifier: windows-sumologic-check-aws
+        unified_job_template: Windows-sumologic-check-aws
+        failure_nodes:
+          - windows-sumologic-aws
+
+      - identifier: windows-automox-check-aws
+        unified_job_template: Windows-automox-check-aws
+        failure_nodes:
+          - windows-automox-aws
+
+      - identifier: windows-datadog-aws
+        unified_job_template: Windows-datadog-aws
+
+      - identifier: windows-crowdstrike-aws
+        unified_job_template: Windows-crowdstrike-aws
+
+      - identifier: windows-snowagent-aws
+        unified_job_template: Windows-snowagent-production-aws
+
+      - identifier: windows-sumologic-aws
+        unified_job_template: Windows-sumologic-production-aws
+
+      - identifier: windows-automox-aws
+        unified_job_template: Windows-automox-production-aws
