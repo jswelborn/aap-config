@@ -8,5 +8,16 @@
     - ../job_templates/windows_azure.yaml
     - ../group_vars/all.yaml
 
+  environment:
+    CONTROLLER_HOST: "{{ controller_hostname }}"
+    CONTROLLER_OAUTH_TOKEN: "{{ controller_oauthtoken }}"
+    CONTROLLER_VERIFY_SSL: "{{ controller_validate_certs | string }}"
+
+  module_defaults:
+    group/ansible.controller.controller:
+      controller_host: "{{ controller_hostname }}"
+      controller_oauthtoken: "{{ controller_oauthtoken }}"
+      validate_certs: "{{ controller_validate_certs }}"
+
   roles:
     - infra.aap_configuration.controller_job_templates

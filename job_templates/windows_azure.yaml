@@ -287,3 +287,165 @@ controller_templates:
     verbosity: 0
     timeout: 0
     state: present
+
+  - name: Windows-identity-onboard-azure
+    organization: HTS SRE
+    description: AAP job template to onboard existing Windows servers by granting the Windows Automation service account local administrator access
+    job_type: run
+    inventory: Azure
+    project: Windows-identity
+    playbook: windows_identity_onboard.yaml
+    credentials:
+      - hetwinadmin_updated
+    instance_groups:
+      - azure-execution
+    execution_environment: EE Windows Kerberos
+    ask_limit_on_launch: true
+    ask_variables_on_launch: true
+    extra_vars:
+      ansible_host: !unsafe "{{ inventory_hostname }}.CompanyNet.org"
+      ansible_connection: winrm
+      ansible_port: 5985
+      ansible_winrm_transport: kerberos
+      ansible_winrm_kinit_mode: managed
+    prevent_instance_group_fallback: true
+    job_slice_count: 1
+    forks: 0
+    verbosity: 0
+    timeout: 0
+    state: present
+
+  - name: Windows-datadog-check-azure
+    organization: HTS SRE
+    description: AAP job template for Windows Datadog Agent compliance check in Azure
+    job_type: run
+    inventory: Azure
+    project: Windows-datadog
+    playbook: windows_datadog_check.yaml
+    credentials:
+      - "Windows Automation"
+    instance_groups:
+      - azure-execution
+    execution_environment: EE Windows Kerberos
+    ask_limit_on_launch: true
+    ask_variables_on_launch: true
+    extra_vars:
+      ansible_host: !unsafe "{{ inventory_hostname }}.CompanyNet.org"
+      ansible_connection: winrm
+      ansible_port: 5985
+      ansible_winrm_transport: kerberos
+      ansible_winrm_kinit_mode: managed
+    prevent_instance_group_fallback: true
+    job_slice_count: 1
+    forks: 0
+    verbosity: 0
+    timeout: 0
+    state: present
+
+  - name: Windows-crowdstrike-check-azure
+    organization: HTS SRE
+    description: AAP job template for Windows CrowdStrike Falcon compliance check in Azure
+    job_type: run
+    inventory: Azure
+    project: Windows-crowdstrike
+    playbook: windows_crowdstrike_check.yaml
+    credentials:
+      - "Windows Automation"
+    instance_groups:
+      - azure-execution
+    execution_environment: EE Windows Kerberos
+    ask_limit_on_launch: true
+    ask_variables_on_launch: true
+    extra_vars:
+      ansible_host: !unsafe "{{ inventory_hostname }}.CompanyNet.org"
+      ansible_connection: winrm
+      ansible_port: 5985
+      ansible_winrm_transport: kerberos
+      ansible_winrm_kinit_mode: managed
+    prevent_instance_group_fallback: true
+    job_slice_count: 1
+    forks: 0
+    verbosity: 0
+    timeout: 0
+    state: present
+
+  - name: Windows-snowagent-check-azure
+    organization: HTS SRE
+    description: AAP job template for Windows ServiceNow ACC compliance check in Azure
+    job_type: run
+    inventory: Azure
+    project: Windows-snowagent
+    playbook: windows_snowagent_check.yaml
+    credentials:
+      - "Windows Automation"
+    instance_groups:
+      - azure-execution
+    execution_environment: EE Windows Kerberos
+    ask_limit_on_launch: true
+    ask_variables_on_launch: true
+    extra_vars:
+      ansible_host: !unsafe "{{ inventory_hostname }}.CompanyNet.org"
+      ansible_connection: winrm
+      ansible_port: 5985
+      ansible_winrm_transport: kerberos
+      ansible_winrm_kinit_mode: managed
+    prevent_instance_group_fallback: true
+    job_slice_count: 1
+    forks: 0
+    verbosity: 0
+    timeout: 0
+    state: present
+
+  - name: Windows-sumologic-check-azure
+    organization: HTS SRE
+    description: AAP job template for Windows SumoLogic Collector compliance check in Azure
+    job_type: run
+    inventory: Azure
+    project: Windows-sumologic
+    playbook: windows_sumologic_check.yaml
+    credentials:
+      - "Windows Automation"
+    instance_groups:
+      - azure-execution
+    execution_environment: EE Windows Kerberos
+    ask_limit_on_launch: true
+    ask_variables_on_launch: true
+    extra_vars:
+      ansible_host: !unsafe "{{ inventory_hostname }}.CompanyNet.org"
+      ansible_connection: winrm
+      ansible_port: 5985
+      ansible_winrm_transport: kerberos
+      ansible_winrm_kinit_mode: managed
+    prevent_instance_group_fallback: true
+    job_slice_count: 1
+    forks: 0
+    verbosity: 0
+    timeout: 0
+    state: present
+
+  - name: Windows-automox-check-azure
+    organization: HTS SRE
+    description: AAP job template for Windows Automox Agent compliance check in Azure
+    job_type: run
+    inventory: Azure
+    project: Windows-automox
+    playbook: windows_automox_check.yaml
+    credentials:
+      - "Windows Automation"
+    instance_groups:
+      - azure-execution
+    execution_environment: EE Windows Kerberos
+    ask_limit_on_launch: true
+    ask_variables_on_launch: true
+    extra_vars:
+      ansible_host: !unsafe "{{ inventory_hostname }}.CompanyNet.org"
+      ansible_connection: winrm
+      ansible_port: 5985
+      ansible_winrm_transport: kerberos
+      ansible_winrm_kinit_mode: managed
+    prevent_instance_group_fallback: true
+    job_slice_count: 1
+    forks: 0
+    verbosity: 0
+    timeout: 0
+    state: present
