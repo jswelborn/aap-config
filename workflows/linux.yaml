@@ -88,6 +88,10 @@ controller_workflows:
       - identifier: linux-identity-aws
         unified_job_template: Linux-identity-aws
         success_nodes:
+          - linux-bootstrap-audit-aws
+      - identifier: linux-bootstrap-audit-aws
+        unified_job_template: Linux-bootstrap-audit-aws
+        success_nodes:
           - linux-sumologic-aws
           - linux-crowdstrike-aws
           - linux-snowagent-aws
